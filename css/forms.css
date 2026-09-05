@@ -1,0 +1,445 @@
+/* ==========================================================================
+   RestoOS — Forms, Booking Calendar & Auth Styling
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   General Form Components
+   -------------------------------------------------------------------------- */
+.form-card {
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-10) var(--space-8);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .form-card {
+    padding: var(--space-6) var(--space-4);
+  }
+}
+
+.form-group {
+  margin-bottom: var(--space-5);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-label .optional {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: var(--fs-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-brass);
+  box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.15);
+}
+
+.form-control::placeholder {
+  color: var(--text-faint);
+}
+
+.form-control.error {
+  border-color: var(--accent-rose);
+  background: rgba(244, 63, 94, 0.04);
+}
+
+.form-error-msg {
+  font-size: 0.75rem;
+  color: #FB7185;
+  margin-top: var(--space-1);
+  display: none;
+}
+
+.form-control.error + .form-error-msg,
+.form-group.has-error .form-error-msg {
+  display: block;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Interest Select Pills */
+.interest-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.interest-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.45rem 0.85rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition-fast);
+}
+
+.interest-pill input {
+  display: none;
+}
+
+.interest-pill:hover {
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.interest-pill.selected {
+  background: rgba(200, 169, 126, 0.14);
+  border-color: var(--accent-brass);
+  color: var(--accent-brass);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Schedule Interactive Calendar & Slots
+   -------------------------------------------------------------------------- */
+.schedule-container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-8);
+}
+
+@media (max-width: 900px) {
+  .schedule-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.calendar-month-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.calendar-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-bottom: var(--space-2);
+  text-transform: uppercase;
+}
+
+.calendar-day-btn {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.calendar-day-btn:hover:not(:disabled) {
+  border-color: var(--accent-brass);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.calendar-day-btn.selected {
+  background: var(--accent-brass);
+  color: #0F141C;
+  font-weight: 700;
+  border-color: var(--accent-brass);
+  box-shadow: 0 0 12px rgba(200, 169, 126, 0.35);
+}
+
+.calendar-day-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: transparent;
+  border-color: transparent;
+}
+
+/* Time Slots */
+.slots-title {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: var(--space-1);
+}
+
+.time-slot-btn {
+  padding: 0.65rem 0.5rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.time-slot-btn:hover {
+  border-color: var(--border-medium);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.time-slot-btn.selected {
+  background: rgba(200, 169, 126, 0.15);
+  border-color: var(--accent-brass);
+  color: var(--accent-brass);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Partner Login Card
+   -------------------------------------------------------------------------- */
+.auth-wrapper {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12) var(--space-4);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-10) var(--space-8);
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.auth-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.auth-subtitle {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.demo-account-box {
+  background: rgba(200, 169, 126, 0.08);
+  border: 1px dashed rgba(200, 169, 126, 0.35);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+  font-size: var(--fs-xs);
+}
+
+.demo-account-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+  color: var(--accent-brass);
+  font-weight: 700;
+}
+
+.demo-account-info {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+
+.demo-fill-btn {
+  font-size: 0.75rem;
+  color: var(--accent-brass);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.demo-fill-btn:hover {
+  color: var(--accent-brass-hover);
+}
+
+.auth-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--space-6);
+}
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-wrap input[type="checkbox"] {
+  accent-color: var(--accent-brass);
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   Submission Confirmation States
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 15, 20, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content-card {
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-8);
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(200, 169, 126, 0.1);
+  transform: translateY(20px);
+  transition: transform var(--transition-base);
+}
+
+.modal-backdrop.open .modal-content-card {
+  transform: translateY(0);
+}
+
+.modal-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent-emerald-soft);
+  color: var(--accent-emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-5) auto;
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.modal-desc {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.modal-summary-box {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: left;
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.summary-line:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Login — RestoOS Platform</title>
+  <meta name="description" content="Sign in to your private RestoOS restaurant partner portal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/marketing.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand" aria-label="RestoOS Home">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+        </div>
+        <span class="brand-name">RestoOS</span>
+      </a>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-ghost">← Back to Overview</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <span class="badge badge-brass" style="margin-bottom: var(--space-2);">Partner Portal</span>
+        <h1 class="auth-title">Sign In to RestoOS</h1>
+        <p class="auth-subtitle">Manage your digital menu, restaurant profile, and QR codes.</p>
+      </div>
+
+      <!-- Demo Credentials Quick Fill Banner -->
+      <div class="demo-account-box">
+        <div class="demo-account-header">
+          <span>Demo Account Credentials</span>
+          <button type="button" id="demoFillBtn" class="demo-fill-btn">Click to Auto-fill</button>
+        </div>
+        <p class="demo-account-info">
+          Email: <code>demo@restaurant.com</code><br>
+          Password: <code>demo12345</code>
+        </p>
+      </div>
+
+      <!-- Error message container -->
+      <div id="loginErrorBanner" class="form-error-msg" style="display:none; margin-bottom: var(--space-4); text-align:center; padding: 8px; background: rgba(244, 63, 94, 0.1); border-radius: var(--radius-sm); border: 1px solid rgba(244, 63, 94, 0.3);"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" class="form-control" placeholder="owner@restaurant.com" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <div class="form-label">
+            <label for="loginPassword">Password</label>
+            <a href="#" onclick="alert('Demo notice: In this prototype phase, please use the quick-fill button above to access the dashboard preview.'); return false;" style="color: var(--accent-brass); font-size: 0.75rem;">Forgot Password?</a>
+          </div>
+          <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+
+        <div class="auth-options-row">
+          <label class="checkbox-wrap">
+            <input type="checkbox" id="rememberMe">
+            <span>Remember me</span>
+          </label>
+          <span class="badge badge-subtle" style="font-size: 0.65rem;">Mock Auth</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          <span>Sign In to Dashboard</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: var(--space-6); font-size: var(--fs-xs); color: var(--text-muted);">
+        Don't have a partner account yet? <a href="request-demo.html" style="color: var(--accent-brass); font-weight: 600;">Request a Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RestoOS — The Digital Experience Platform for Modern Restaurants</title>
+  <meta name="description" content="Beautiful websites and digital menus designed for modern restaurants — managed entirely from one simple platform.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/marketing.css">
+</head>
+<body>
+
+  <!-- ================= TOP NAVIGATION ================= -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand" aria-label="RestoOS Home">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">RestoOS</span>
+          <span class="brand-tagline-subtle">Restaurant Digital Platform</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#showcase" class="nav-link">Our Work</a>
+        <a href="#dashboard-preview" class="nav-link">Dashboard</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost btn-desktop-only">Partner Login</a>
+        <a href="request-demo.html" class="btn btn-primary">Request a Demo</a>
+        <button class="nav-burger" id="burgerBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="nav-brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+        </div>
+        <span class="brand-name">RestoOS</span>
+      </div>
+      <button id="drawerCloseBtn" aria-label="Close menu" style="padding: 6px; color: var(--text-muted);">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="drawer-links" aria-label="Mobile Navigation">
+      <a href="#features" class="drawer-link">Features</a>
+      <a href="#how-it-works" class="drawer-link">How It Works</a>
+      <a href="#showcase" class="drawer-link">Our Work</a>
+      <a href="#dashboard-preview" class="drawer-link">Dashboard Preview</a>
+      <a href="#pricing" class="drawer-link">Pricing</a>
+      <a href="#faq" class="drawer-link">FAQ</a>
+    </nav>
+    <div class="drawer-actions">
+      <a href="login.html" class="btn btn-secondary btn-block">Partner Login</a>
+      <a href="request-demo.html" class="btn btn-primary btn-block">Request a Demo</a>
+      <a href="schedule.html" class="btn btn-line btn-block">Schedule Meeting</a>
+    </div>
+  </aside>
+  <div class="drawer-scrim" id="drawerScrim"></div>
+
+  <main>
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section class="hero-section" id="hero">
+      <div class="bg-glow-radial"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text-wrap">
+            <div class="hero-badge-wrap">
+              <span class="badge badge-brass">
+                <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--accent-brass);"></span>
+                Hospitality Digital Platform
+              </span>
+            </div>
+            <h1 class="hero-title">
+              Your restaurant deserves a <span class="highlight">better digital experience.</span>
+            </h1>
+            <p class="hero-subtitle">
+              Beautiful websites and digital menus designed for modern restaurants — managed entirely from one simple platform.
+            </p>
+            <div class="hero-ctas">
+              <a href="request-demo.html" class="btn btn-primary btn-lg">Request a Demo</a>
+              <a href="#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
+            </div>
+            <div class="hero-trust-bullets">
+              <div class="trust-bullet">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Mobile-first dining</span>
+              </div>
+              <div class="trust-bullet">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Self-serve menu updates</span>
+              </div>
+              <div class="trust-bullet">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Direct WhatsApp ordering</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Restaurant Visual Mockup -->
+          <div class="hero-visual">
+            <div class="hero-card-preview">
+              <div class="preview-browser-head">
+                <div class="device-dots">
+                  <span class="device-dot red"></span>
+                  <span class="device-dot yellow"></span>
+                  <span class="device-dot green"></span>
+                </div>
+                <div class="preview-address-bar">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <span>restaurant.com/lume</span>
+                </div>
+                <span class="badge badge-emerald" style="font-size: 0.6rem;">Live Reference</span>
+              </div>
+              <div class="preview-content-box">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=900&auto=format&fit=crop" alt="LUMÉ Dining Preview">
+                <div class="preview-inner-overlay">
+                  <div class="preview-brand-tag">LUMÉ • Modern Mediterranean</div>
+                  <div class="preview-bottom-actions">
+                    <p class="preview-dish-title">Grilled Sea Bass</p>
+                    <p class="preview-dish-desc">Charred seasonal vegetables, lemon herb butter</p>
+                    <div class="preview-meta-row">
+                      <span class="preview-price">$24.00</span>
+                      <a href="restaurants/lume/index.html" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                        <span>Open Live Demo</span>
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 2. FEATURES SECTION ================= -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Platform Capabilities</p>
+          <h2 class="section-title">Designed for hospitality. Built to simplify.</h2>
+          <p class="section-subtitle">
+            Everything your restaurant needs to look remarkable online, capture guest attention, and keep your menu accurate in real time.
+          </p>
+        </div>
+        <div class="features-grid" id="featuresGrid">
+          <!-- Injected dynamically via JS from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. HOW IT WORKS ================= -->
+    <section class="section" id="how-it-works" style="background: rgba(17, 22, 32, 0.4); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">The Process</p>
+          <h2 class="section-title">From your kitchen to guests' phones in 4 steps</h2>
+          <p class="section-subtitle">
+            No technical hurdles, no complex setup. We handle the heavy lifting so you can focus on cooking and hospitality.
+          </p>
+        </div>
+        <div class="how-it-works-grid" id="howItWorksGrid">
+          <!-- Injected dynamically via JS from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. PRODUCT SHOWCASE ("OUR WORK") ================= -->
+    <section class="section" id="showcase">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Our Work</p>
+          <h2 class="section-title">Built for restaurants. Designed to impress.</h2>
+          <p class="section-subtitle">
+            Explore live and conceptual dining experiences built on our platform. Experience the speed, typography, and ordering flow firsthand.
+          </p>
+        </div>
+        <div class="showcase-grid" id="showcaseGrid">
+          <!-- Injected dynamically via JS from data.js (LUMÉ as primary live demo) -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. DASHBOARD PREVIEW ================= -->
+    <section class="section" id="dashboard-preview" style="background: linear-gradient(180deg, rgba(12, 15, 20, 0) 0%, rgba(18, 24, 34, 0.5) 100%);">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Partner Portal</p>
+          <h2 class="section-title">You manage everything yourself</h2>
+          <p class="section-subtitle">
+            An intuitive dashboard designed for floor managers and chefs. Change menu items, adjust prices, or mark sold-out specials in seconds from any device.
+          </p>
+        </div>
+
+        <div class="dashboard-preview-card">
+          <div class="dashboard-head-bar">
+            <div class="dash-restaurant-meta">
+              <div class="dash-avatar">L</div>
+              <div>
+                <p class="dash-title">LUMÉ Partner Dashboard</p>
+                <p class="dash-subtitle">Rue Gouraud, Beirut • Professional Plan</p>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap: var(--space-3);">
+              <span class="badge badge-demo">Illustrative Preview</span>
+              <a href="login.html" class="btn btn-secondary btn-sm">Enter Dashboard Demo</a>
+            </div>
+          </div>
+
+          <div class="dash-metrics-grid" id="dashMetricsGrid">
+            <!-- Injected via JS -->
+          </div>
+
+          <div class="dash-recent-section">
+            <div style="max-width: 320px;">
+              <h4 style="font-family: var(--font-heading); font-size: var(--fs-md); margin-bottom: 6px; color: var(--text-primary);">Recent Menu Updates</h4>
+              <p style="font-size: var(--fs-xs); color: var(--text-muted); line-height: 1.5;">Demonstrates real-time menu management synced across customer digital menus.</p>
+            </div>
+            <div class="dash-recent-list" id="dashRecentList">
+              <!-- Injected via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. PRICING SECTION ================= -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Pricing & Plans</p>
+          <h2 class="section-title">Transparent pricing for every restaurant</h2>
+          <p class="section-subtitle">
+            Choose a plan tailored to your dining room. No hidden transaction fees on your food orders.
+          </p>
+        </div>
+
+        <!-- Demonstration Notice -->
+        <div style="max-width: 600px; margin: 0 auto var(--space-8) auto; text-align: center;">
+          <span class="badge badge-demo" style="padding: 6px 14px; font-size: 0.72rem;">
+            Note: Example pricing shown for demonstration purposes. Subject to customization upon launch.
+          </span>
+        </div>
+
+        <!-- Monthly / Annual Toggle -->
+        <div class="pricing-toggle-wrap">
+          <span class="toggle-label active" id="labelMonthly">Monthly Billing</span>
+          <div class="toggle-switch" id="pricingToggle" role="switch" aria-checked="false" aria-label="Toggle annual billing with 20% discount" tabindex="0">
+            <div class="toggle-handle"></div>
+          </div>
+          <span class="toggle-label" id="labelAnnual">
+            Annual Billing <span class="badge badge-brass" style="margin-left: 4px; font-size: 0.65rem;">Save 20%</span>
+          </span>
+        </div>
+
+        <div class="pricing-grid" id="pricingGrid">
+          <!-- Injected via JS from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. TESTIMONIALS ================= -->
+    <section class="section" id="testimonials" style="background: rgba(17, 22, 32, 0.4); border-top: 1px solid var(--border-subtle);">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Restaurateur Voices</p>
+          <h2 class="section-title">Built with culinary leaders in mind</h2>
+          <div style="margin-top: var(--space-2);">
+            <span class="badge badge-demo">Illustrative Demo Quotes • Demo Partners</span>
+          </div>
+        </div>
+        <div class="testimonials-grid" id="testimonialsGrid">
+          <!-- Injected via JS from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 8. FAQ SECTION ================= -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Frequently Asked Questions</p>
+          <h2 class="section-title">Everything you need to know</h2>
+          <p class="section-subtitle">
+            Clear answers regarding websites, menu management, QR codes, and WhatsApp ordering.
+          </p>
+        </div>
+        <div class="faq-list" id="faqList">
+          <!-- Injected via JS with smooth accordion expand/collapse -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 9. FINAL CTA ================= -->
+    <section class="section" style="padding-top: var(--space-12);">
+      <div class="container">
+        <div class="final-cta-card">
+          <div class="bg-glow-radial" style="opacity: 0.4;"></div>
+          <div class="final-cta-content">
+            <p class="eyebrow" style="color: var(--accent-brass);">Get Started Today</p>
+            <h2 class="final-cta-title">Ready to give your restaurant a better digital presence?</h2>
+            <p class="final-cta-sub">
+              Experience how easy it is to manage your menu, delight dining guests, and receive direct WhatsApp orders.
+            </p>
+            <div class="hero-ctas" style="justify-content: center; margin-bottom: 0;">
+              <a href="request-demo.html" class="btn btn-primary btn-lg">Request a Demo</a>
+              <a href="schedule.html" class="btn btn-secondary btn-lg">Schedule a Meeting</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="demo-disclaimer-box">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>
+          <strong>Stage 1 Frontend Prototype:</strong> This platform is running purely on frontend architecture and local mock data. No backend, real credit card transactions, or live calendar sync is currently active.
+        </span>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand">
+            <div class="brand-mark">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+            </div>
+            <span class="brand-name">RestoOS</span>
+          </div>
+          <p>
+            We make your restaurant look better online and make managing it easier. Built specifically for modern restaurateurs and hospitality teams.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <div class="footer-links">
+            <a href="#features" class="footer-link">Features</a>
+            <a href="#how-it-works" class="footer-link">How It Works</a>
+            <a href="#showcase" class="footer-link">Our Work (LUMÉ)</a>
+            <a href="#dashboard-preview" class="footer-link">Dashboard Preview</a>
+            <a href="#pricing" class="footer-link">Pricing Plans</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Portals</h4>
+          <div class="footer-links">
+            <a href="request-demo.html" class="footer-link">Request a Demo</a>
+            <a href="schedule.html" class="footer-link">Schedule Meeting (Demo)</a>
+            <a href="login.html" class="footer-link">Partner Portal Login</a>
+            <a href="restaurants/lume/index.html" target="_blank" rel="noopener" class="footer-link">LUMÉ Live Demo ↗</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Hospitality Focus</h4>
+          <div class="footer-links">
+            <span class="footer-link" style="color: var(--text-muted);">Mobile Menus</span>
+            <span class="footer-link" style="color: var(--text-muted);">QR Codes</span>
+            <span class="footer-link" style="color: var(--text-muted);">WhatsApp Ordering</span>
+            <span class="footer-link" style="color: var(--text-muted);">Menu Management</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 RestoOS Platform. All rights reserved. Built frontend-first.</p>
+        <div style="display:flex; gap: var(--space-4);">
+          <span style="color: var(--text-muted);">Stage 1 Implementation</span>
+          <a href="login.html" style="color: var(--accent-brass);">Partner Login</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
