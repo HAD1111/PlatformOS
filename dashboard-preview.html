@@ -118,19 +118,20 @@
       
       <!-- Topbar -->
       <header class="dash-topbar">
-        <div style="display:flex; align-items:center; gap: var(--space-4);">
-          <button id="sidebarToggleBtn" class="nav-burger" style="display:inline-flex;" aria-label="Toggle navigation">
+        <div class="dash-topbar-left">
+          <button id="sidebarToggleBtn" class="nav-burger" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
           </button>
-          <div>
-            <span style="font-size:var(--fs-sm); font-weight:700; color:var(--text-primary);">LUMÉ — Beirut</span>
-            <span class="badge badge-subtle" style="margin-left: 6px; font-size:0.65rem;">Demo Restaurant Instance</span>
+          <div class="dash-topbar-title">
+            <span class="dash-topbar-name">LUMÉ — Beirut</span>
+            <span class="badge badge-subtle dash-topbar-badge">Demo Restaurant Instance</span>
           </div>
         </div>
 
-        <div style="display:flex; align-items:center; gap: var(--space-4);">
+        <div class="dash-topbar-right">
           <a href="restaurants/lume/index.html" target="_blank" rel="noopener" class="btn btn-line btn-sm">
-            <span>View Public Website ↗</span>
+            <span class="dash-btn-text-full">View Public Website ↗</span>
+            <span class="dash-btn-text-short">Live Site ↗</span>
           </a>
           <button id="logoutBtn" class="btn btn-ghost btn-sm" style="color:var(--text-muted);">
             Sign Out

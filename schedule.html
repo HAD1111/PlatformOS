@@ -27,8 +27,14 @@
       </a>
 
       <div class="nav-actions">
-        <a href="index.html" class="btn btn-ghost">← Back to Overview</a>
-        <a href="request-demo.html" class="btn btn-line">Request Demo Form</a>
+        <a href="index.html" class="btn btn-ghost">
+          <span class="nav-back-full">← Back to Overview</span>
+          <span class="nav-back-short">← Back</span>
+        </a>
+        <a href="request-demo.html" class="btn btn-line">
+          <span class="nav-back-full">Request Demo Form</span>
+          <span class="nav-back-short">Demo Form</span>
+        </a>
       </div>
     </div>
   </header>
@@ -59,7 +65,7 @@
           <div class="schedule-container">
             
             <!-- Left: Date & Time Picker -->
-            <div style="background: var(--bg-subtle); padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);">
+            <div class="schedule-calendar-card">
               <div class="calendar-header">
                 <span class="calendar-month-title">Select Date</span>
                 <span class="badge badge-subtle" id="selectedDateLabel">Choose day</span>
@@ -122,7 +128,7 @@
               </div>
 
               <div style="padding-top: var(--space-4);">
-                <button type="submit" class="btn btn-primary btn-block btn-lg">
+                <button type="submit" class="btn btn-primary btn-block btn-lg btn-wrap-mobile">
                   <span>Confirm Demo Booking (Simulation)</span>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
                 </button>
@@ -155,7 +161,7 @@
         Simulation Notice: No Real Calendar Event Created
       </div>
 
-      <div style="display: flex; gap: var(--space-3); justify-content: center;">
+      <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
         <button type="button" class="btn btn-primary" id="bookingCloseBtn">Done</button>
         <a href="index.html" class="btn btn-secondary">Return to Overview</a>
       </div>

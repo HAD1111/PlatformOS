@@ -27,7 +27,10 @@
       </a>
 
       <div class="nav-actions">
-        <a href="index.html" class="btn btn-ghost">← Back to Overview</a>
+        <a href="index.html" class="btn btn-ghost">
+          <span class="nav-back-full">← Back to Overview</span>
+          <span class="nav-back-short">← Back</span>
+        </a>
         <a href="login.html" class="btn btn-secondary">Partner Login</a>
       </div>
     </div>
@@ -127,12 +130,12 @@
             <textarea id="message" rows="3" class="form-control" placeholder="Tell us about your cuisine, seating capacity, or timeline..."></textarea>
           </div>
 
-          <div style="margin-top: var(--space-8); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4);">
-            <button type="submit" class="btn btn-primary btn-lg">
+          <div class="form-actions-row" style="margin-top: var(--space-8);">
+            <button type="submit" class="btn btn-primary btn-lg btn-wrap-mobile">
               <span>Request a Demo</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
-            <a href="schedule.html" class="btn btn-line">Or schedule a specific meeting time ↗</a>
+            <a href="schedule.html" class="btn btn-line btn-wrap-mobile">Or schedule a specific meeting time ↗</a>
           </div>
         </form>
       </div>
@@ -159,7 +162,7 @@
         Simulated Record Saved to Local Session
       </div>
 
-      <div style="display: flex; gap: var(--space-3); justify-content: center;">
+      <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
         <button type="button" class="btn btn-primary" id="modalCloseBtn">Close</button>
         <a href="index.html" class="btn btn-secondary">Return to Overview</a>
       </div>

@@ -92,6 +92,27 @@
   }
 }
 
+.form-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .form-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .form-actions-row .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
 /* Interest Select Pills */
 .interest-pills {
   display: flex;
@@ -140,9 +161,30 @@
   gap: var(--space-8);
 }
 
+.schedule-container > div {
+  min-width: 0;
+  width: 100%;
+}
+
 @media (max-width: 900px) {
   .schedule-container {
     grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+.schedule-calendar-card {
+  background: var(--bg-subtle);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  min-width: 0;
+  width: 100%;
+}
+
+@media (max-width: 520px) {
+  .schedule-calendar-card {
+    padding: var(--space-3);
   }
 }
 
@@ -150,6 +192,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
   margin-bottom: var(--space-4);
 }
 
@@ -165,6 +209,12 @@
   grid-template-columns: repeat(7, 1fr);
   gap: var(--space-2);
   margin-bottom: var(--space-6);
+}
+
+@media (max-width: 520px) {
+  .calendar-days-grid {
+    gap: 4px;
+  }
 }
 
 .calendar-day-header {
@@ -190,6 +240,18 @@
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-fast);
+  padding: 2px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  .calendar-day-btn span:first-child {
+    font-size: 0.58rem !important;
+  }
+  .calendar-day-btn span:last-child {
+    font-size: 0.82rem !important;
+  }
 }
 
 .calendar-day-btn:hover:not(:disabled) {
@@ -278,6 +340,13 @@
   border-radius: var(--radius-2xl);
   padding: var(--space-10) var(--space-8);
   box-shadow: var(--shadow-lg), 0 0 60px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: var(--space-8) var(--space-4);
+  }
 }
 
 .auth-header {
@@ -390,6 +459,15 @@
   box-shadow: var(--shadow-lg), 0 0 60px rgba(200, 169, 126, 0.1);
   transform: translateY(20px);
   transition: transform var(--transition-base);
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .modal-content-card {
+    padding: var(--space-6) var(--space-4);
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+  }
 }
 
 .modal-backdrop.open .modal-content-card {
@@ -432,12 +510,21 @@
   font-size: var(--fs-xs);
   color: var(--text-secondary);
   margin-bottom: var(--space-6);
+  min-width: 0;
 }
 
 .summary-line {
   display: flex;
   justify-content: space-between;
+  gap: var(--space-2);
+  min-width: 0;
   margin-bottom: var(--space-2);
+}
+
+.summary-line strong {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: right;
 }
 
 .summary-line:last-child {
