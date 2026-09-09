@@ -77,7 +77,7 @@ class PartnerAuth {
         // Show success and redirect
         submitBtn.innerHTML = `<span>Access Granted ✓</span>`;
         setTimeout(() => {
-          window.location.href = res.redirectTo || 'dashboard-preview.html';
+          window.location.href = res.redirectTo || 'dashboard.html';
         }, 400);
       } catch (err) {
         this.showError(err.message || "Authentication error. Try demo credentials.");

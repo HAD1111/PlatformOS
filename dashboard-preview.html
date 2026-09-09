@@ -27,6 +27,9 @@
           <span class="brand-name" style="font-size: var(--fs-base);">RestoOS</span>
           <span class="brand-tagline-subtle">Partner Portal</span>
         </div>
+        <button type="button" id="sidebarCloseBtn" class="dash-sidebar-close" aria-label="Close navigation">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
 
       <nav class="dash-nav-groups" aria-label="Dashboard Navigation">
@@ -113,13 +116,16 @@
       </div>
     </aside>
 
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="dash-sidebar-scrim" id="sidebarScrim" aria-hidden="true"></div>
+
     <!-- Main Content Area -->
     <div class="dash-main">
       
       <!-- Topbar -->
       <header class="dash-topbar">
         <div class="dash-topbar-left">
-          <button id="sidebarToggleBtn" class="nav-burger" aria-label="Toggle navigation">
+          <button id="sidebarToggleBtn" class="nav-burger" aria-label="Open navigation" aria-expanded="false" aria-controls="dashSidebar">
             <span></span><span></span><span></span>
           </button>
           <div class="dash-topbar-title">
@@ -143,11 +149,14 @@
       <div class="dash-content">
         
         <!-- Demonstration Banner -->
-        <div class="demo-disclaimer-box" style="margin-bottom: var(--space-6);">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span>
-            <strong>Stage 1 Visual Dashboard Preview:</strong> This demonstrates the navigation hierarchy and visual layout of the upcoming partner portal. The interactive CRUD and real-time CMS interfaces will be introduced in Stages 3 & 4.
-          </span>
+        <div class="demo-disclaimer-box" style="margin-bottom: var(--space-6); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-3);">
+          <div style="display:flex; align-items:center; gap:var(--space-3);">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0; color:var(--accent-brass);"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>
+              <strong>Stage 2A Live Dashboard Available:</strong> You can now manage restaurant information and menu dishes interactively.
+            </span>
+          </div>
+          <a href="dashboard.html" class="btn btn-primary btn-sm" style="white-space:nowrap;">Open Live Dashboard →</a>
         </div>
 
         <!-- Greeting -->
@@ -310,14 +319,74 @@
       });
     }
 
-    // Sidebar mobile toggle
+    // Sidebar mobile off-canvas toggle & overlay
     const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+    const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
     const dashSidebar = document.getElementById('dashSidebar');
+    const sidebarScrim = document.getElementById('sidebarScrim');
+
+    function openMobileSidebar() {
+      if (!dashSidebar) return;
+      dashSidebar.classList.add('open');
+      if (sidebarScrim) {
+        sidebarScrim.classList.add('is-open');
+        sidebarScrim.setAttribute('aria-hidden', 'false');
+      }
+      if (sidebarToggleBtn) {
+        sidebarToggleBtn.setAttribute('aria-expanded', 'true');
+        sidebarToggleBtn.setAttribute('aria-label', 'Close navigation');
+      }
+      if (sidebarCloseBtn) {
+        setTimeout(() => sidebarCloseBtn.focus(), 50);
+      }
+    }
+
+    function closeMobileSidebar() {
+      if (!dashSidebar) return;
+      dashSidebar.classList.remove('open');
+      if (sidebarScrim) {
+        sidebarScrim.classList.remove('is-open');
+        sidebarScrim.setAttribute('aria-hidden', 'true');
+      }
+      if (sidebarToggleBtn) {
+        sidebarToggleBtn.setAttribute('aria-expanded', 'false');
+        sidebarToggleBtn.setAttribute('aria-label', 'Open navigation');
+      }
+    }
+
     if (sidebarToggleBtn && dashSidebar) {
       sidebarToggleBtn.addEventListener('click', () => {
-        dashSidebar.classList.toggle('open');
+        if (dashSidebar.classList.contains('open')) {
+          closeMobileSidebar();
+        } else {
+          openMobileSidebar();
+        }
       });
     }
+
+    if (sidebarCloseBtn) {
+      sidebarCloseBtn.addEventListener('click', () => {
+        closeMobileSidebar();
+        if (sidebarToggleBtn) sidebarToggleBtn.focus();
+      });
+    }
+
+    if (sidebarScrim) {
+      sidebarScrim.addEventListener('click', closeMobileSidebar);
+    }
+
+    // Close on navigation item tap
+    document.querySelectorAll('.dash-nav-item').forEach(item => {
+      item.addEventListener('click', closeMobileSidebar);
+    });
+
+    // Escape key closes mobile sidebar
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dashSidebar && dashSidebar.classList.contains('open')) {
+        closeMobileSidebar();
+        if (sidebarToggleBtn) sidebarToggleBtn.focus();
+      }
+    });
   </script>
 </body>
 </html>

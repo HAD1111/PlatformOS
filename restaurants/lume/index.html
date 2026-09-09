@@ -72,10 +72,10 @@
     <div class="hero__scrim"></div>
   </div>
   <div class="hero__content">
-    <p class="eyebrow hero__eyebrow reveal">Beirut, Lebanon</p>
-    <h1 class="hero__title reveal">LUMÉ</h1>
-    <p class="hero__tagline reveal">Modern Mediterranean Dining</p>
-    <p class="hero__sub reveal">Seasonal ingredients, open fire cooking, and a table that feels like home — reimagined for tonight.</p>
+    <p class="eyebrow hero__eyebrow reveal" id="heroEyebrow">Beirut, Lebanon</p>
+    <h1 class="hero__title reveal" id="heroTitle">LUMÉ</h1>
+    <p class="hero__tagline reveal" id="heroTagline">Modern Mediterranean Dining</p>
+    <p class="hero__sub reveal" id="heroSub">Seasonal ingredients, open fire cooking, and a table that feels like home — reimagined for tonight.</p>
     <div class="hero__ctas reveal">
       <a href="#menu" class="btn btn--solid">View Menu</a>
       <a href="#contact" class="btn btn--ghost">Reserve a Table</a>
@@ -109,9 +109,9 @@
   </div>
   <div class="featured__content reveal">
     <p class="eyebrow">Chef's Choice</p>
-    <h2 class="featured__title">Charcoal Grilled<br>Sea Bass</h2>
-    <p class="featured__desc">Whole sea bass, slow-charred over an open flame and finished with lemon herb butter, served alongside vegetables pulled straight from the coals.</p>
-    <p class="featured__price">$24</p>
+    <h2 class="featured__title" id="featuredTitle">Charcoal Grilled<br>Sea Bass</h2>
+    <p class="featured__desc" id="featuredDesc">Whole sea bass, slow-charred over an open flame and finished with lemon herb butter, served alongside vegetables pulled straight from the coals.</p>
+    <p class="featured__price" id="featuredPrice">$24</p>
     <button class="btn btn--line" id="discoverBtn" data-id="2">Discover the Dish</button>
   </div>
 </section>
@@ -120,7 +120,7 @@
 <section class="about" id="about">
   <div class="section-inner about__inner">
     <div class="about__text reveal">
-      <p class="eyebrow">About LUMÉ</p>
+      <p class="eyebrow" id="aboutEyebrow">About LUMÉ</p>
       <h2 class="section-title">A table shaped by<br>the Mediterranean</h2>
       <p class="about__lead">LUMÉ brings together the warmth of Mediterranean hospitality and contemporary cuisine.</p>
       <p class="about__body">Founded by a small team of cooks who grew up between coastal kitchens and family tables, LUMÉ is built around fire, citrus, and patience. Every dish begins with what's in season and ends on a plate meant to be shared.</p>
@@ -147,16 +147,16 @@
   <div class="section-inner location__inner">
     <div class="location__details reveal">
       <p class="eyebrow">Visit Us</p>
-      <h2 class="section-title">Beirut, Lebanon</h2>
+      <h2 class="section-title" id="locationCity">Beirut, Lebanon</h2>
 
       <dl class="location__list">
         <div>
           <dt>Address</dt>
-          <dd>Rue Gouraud, Gemmayzeh, Beirut</dd>
+          <dd id="locationAddress">Rue Gouraud, Gemmayzeh, Beirut</dd>
         </div>
         <div>
           <dt>Phone</dt>
-          <dd><a href="tel:+9611234567">+961 1 234 567</a></dd>
+          <dd><a href="tel:+9611234567" id="locationPhoneLink">+961 1 234 567</a></dd>
         </div>
         <div>
           <dt>Monday – Thursday</dt>
@@ -183,7 +183,7 @@
     <h2 class="cta__title">Good food deserves<br>good company.</h2>
     <p class="cta__sub">Join us for dinner.</p>
     <div class="cta__actions">
-      <a href="tel:+9611234567" class="btn btn--solid" id="reserveBtn">Reserve a Table</a>
+      <a href="#menu" class="btn btn--solid" id="reserveBtn">Back To Menu</a>
       <a href="https://wa.me/9611234567?text=Hello%20LUM%C3%89%2C%20I%20would%20like%20to%20reserve%20a%20table" target="_blank" rel="noopener noreferrer" class="btn btn--ghost" id="whatsappBtn">WhatsApp Us</a>
     </div>
   </div>
@@ -196,7 +196,7 @@
   <div class="section-inner footer__inner">
     <div class="footer__brand">
       <span class="nav__name">LUMÉ</span>
-      <p>Modern Mediterranean dining in the heart of Beirut.</p>
+      <p id="footerBrandDesc">Modern Mediterranean dining in the heart of Beirut.</p>
     </div>
 
     <nav class="footer__col" aria-label="Footer navigation">
@@ -215,15 +215,15 @@
 
     <div class="footer__col">
       <h3>Contact</h3>
-      <p>Rue Gouraud, Gemmayzeh, Beirut</p>
-      <p><a href="tel:+9611234567">+961 1 234 567</a></p>
+      <p id="footerAddress">Rue Gouraud, Gemmayzeh, Beirut</p>
+      <p><a href="tel:+9611234567" id="footerPhoneLink">+961 1 234 567</a></p>
       <div class="footer__social" aria-label="Social media">
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="LUMÉ on Instagram">IG</a>
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="LUMÉ on Facebook">FB</a>
       </div>
     </div>
   </div>
-  <p class="footer__copy">© 2026 LUMÉ. All rights reserved.</p>
+  <p class="footer__copy" id="footerCopy">© 2026 LUMÉ. All rights reserved.</p>
 </footer>
 
 <!-- ================= FOOD MODAL ================= -->
@@ -281,6 +281,7 @@
   </div>
 </aside>
 
+<script src="../../js/restaurant-store.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

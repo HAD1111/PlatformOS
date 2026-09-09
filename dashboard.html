@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Dashboard — RestoOS Platform</title>
+  <meta name="description" content="Manage your restaurant profile, live digital menu, and digital presence.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dash-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dash-sidebar" id="dashSidebar">
+      <div class="dash-sidebar-header">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name" style="font-size: var(--fs-base);">RestoOS</span>
+          <span class="brand-tagline-subtle">Partner Portal</span>
+        </div>
+        <button type="button" id="sidebarCloseBtn" class="dash-sidebar-close" aria-label="Close navigation">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <nav class="dash-nav-groups" aria-label="Dashboard Navigation">
+        <!-- Main -->
+        <div>
+          <p class="dash-nav-group-title">Main</p>
+          <button type="button" class="dash-nav-item active" data-view-target="overview" id="navItemOverview">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Dashboard Overview</span>
+          </button>
+        </div>
+
+        <!-- Menu Management -->
+        <div>
+          <p class="dash-nav-group-title">Menu</p>
+          <button type="button" class="dash-nav-item" data-view-target="menu-items" id="navItemMenuItems">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+            <span>Menu Items</span>
+          </button>
+          <button type="button" class="dash-nav-item" data-preview-msg="Category ordering & custom grouping will be unlocked in Stage 2B/3.">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            <span>Categories</span>
+          </button>
+        </div>
+
+        <!-- Restaurant Profile -->
+        <div>
+          <p class="dash-nav-group-title">Restaurant</p>
+          <button type="button" class="dash-nav-item" data-view-target="profile" id="navItemProfile">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Profile Details</span>
+          </button>
+          <button type="button" class="dash-nav-item" data-preview-msg="Opening Hours & Holiday Schedules editor will be unlocked in Stage 2B/3.">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Opening Hours</span>
+          </button>
+          <button type="button" class="dash-nav-item" data-preview-msg="Social Links & Multi-channel WhatsApp routing will be unlocked in Stage 2B/3.">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Contact & WhatsApp</span>
+          </button>
+        </div>
+
+        <!-- Appearance -->
+        <div>
+          <p class="dash-nav-group-title">Appearance</p>
+          <button type="button" class="dash-nav-item" data-preview-msg="Custom Brand Palettes & Typography theme switcher will be unlocked in Stage 3.">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/></svg>
+            <span>Branding & Colors</span>
+          </button>
+          <button type="button" class="dash-nav-item" data-preview-msg="Hero Media Manager & Photo Gallery will be unlocked in Stage 3.">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Hero & Photography</span>
+          </button>
+        </div>
+
+        <!-- Website -->
+        <div>
+          <p class="dash-nav-group-title">Website</p>
+          <button type="button" class="dash-nav-item" data-view-target="website-content">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span>Website Content</span>
+          </button>
+          <button type="button" class="dash-nav-item" data-preview-msg="Custom Brand Palettes & Typography theme switcher will be unlocked in Stage 3.">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/></svg>
+            <span>Branding</span>
+          </button>
+          <button type="button" class="dash-nav-item" data-preview-msg="Printable QR Code Vector & Table Stand generator will be unlocked in Stage 3.">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>QR Code</span>
+          </button>
+          <a href="restaurants/lume/index.html" target="_blank" rel="noopener" class="dash-nav-item">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>Live Website ↗</span>
+          </a>
+        </div>
+
+        <!-- System -->
+        <div>
+          <p class="dash-nav-group-title">System</p>
+          <button type="button" class="dash-nav-item" id="sidebarResetBtn" style="color: var(--accent-rose);">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+            <span>Reset Demo Data</span>
+          </button>
+          <button type="button" class="dash-nav-item" data-preview-msg="Account & Custom Domain settings will be unlocked in Stage 4.">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Settings</span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="dash-sidebar-footer">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <span style="font-size:0.75rem; color:var(--text-muted);">Professional Plan</span>
+          <span class="badge badge-emerald" style="font-size:0.6rem;">Active</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="dash-sidebar-scrim" id="sidebarScrim" aria-hidden="true"></div>
+
+    <!-- Main Content Area -->
+    <div class="dash-main">
+      
+      <!-- Topbar -->
+      <header class="dash-topbar">
+        <div class="dash-topbar-left">
+          <button id="sidebarToggleBtn" class="nav-burger" aria-label="Open navigation" aria-expanded="false" aria-controls="dashSidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="dash-topbar-title">
+            <span class="dash-topbar-name" id="dashTopbarName">LUMÉ — Beirut</span>
+            <span class="badge badge-subtle dash-topbar-badge">Live Store Connected</span>
+          </div>
+        </div>
+
+        <div class="dash-topbar-right">
+          <a href="restaurants/lume/index.html" target="_blank" rel="noopener" class="btn btn-line btn-sm">
+            <span class="dash-btn-text-full">Launch Customer Menu ↗</span>
+            <span class="dash-btn-text-short">Live Site ↗</span>
+          </a>
+          <button id="logoutBtn" class="btn btn-ghost btn-sm" style="color:var(--text-muted);">
+            Sign Out
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="dash-content" id="dashContent">
+        
+        <!-- Live Data Sync Notice Banner -->
+        <div class="demo-disclaimer-box" style="margin-bottom: var(--space-6);">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0; color: var(--accent-brass);"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span>
+            <strong>Stage 2A Live Store Connected:</strong> Edits to profile details and menu items persist instantly in <code>localStorage</code> and synchronize immediately with the customer-facing <a href="restaurants/lume/index.html" target="_blank" rel="noopener" style="color:var(--accent-brass); font-weight:600; text-decoration:underline;">LUMÉ website ↗</a>.
+          </span>
+        </div>
+
+        <!-- ==================================================================
+             VIEW 1: DASHBOARD OVERVIEW
+             ================================================================== -->
+        <section class="dash-view active" id="viewOverview" aria-label="Dashboard Overview">
+          
+          <!-- Greeting Row -->
+          <div class="dash-greeting-row">
+            <div>
+              <h1 style="font-family: var(--font-heading); font-size: var(--fs-2xl); font-weight: 700; color: var(--text-primary); margin-bottom: 4px;" id="overviewGreeting">
+                Welcome back, Chef Karim
+              </h1>
+              <p style="font-size: var(--fs-sm); color: var(--text-muted);" id="overviewSubhead">
+                Here is your digital presence and live menu status for today.
+              </p>
+            </div>
+            <div style="display:flex; gap: var(--space-3); flex-wrap: wrap;">
+              <button type="button" class="btn btn-primary btn-sm" id="btnQuickEditMenu">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+                <span>Manage Menu</span>
+              </button>
+              <a href="restaurants/lume/index.html" target="_blank" rel="noopener" class="btn btn-line btn-sm">
+                <span>View Live Site ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Overview Metric Cards -->
+          <div class="dash-metrics-cards">
+            <div class="dash-stat-card">
+              <span style="font-size: var(--fs-xs); color: var(--text-muted);">Active Menu Items</span>
+              <div class="val" id="metricActiveItems">9</div>
+              <span style="font-size: 0.72rem; color: var(--accent-brass);" id="metricCategoriesCount">5 categories active</span>
+            </div>
+            <div class="dash-stat-card">
+              <span style="font-size: var(--fs-xs); color: var(--text-muted);">Simulated Website Visits</span>
+              <div class="val">1,248</div>
+              <span style="font-size: 0.72rem; color: var(--accent-emerald);">Demo metric • Simulated</span>
+            </div>
+            <div class="dash-stat-card">
+              <span style="font-size: var(--fs-xs); color: var(--text-muted);">WhatsApp Inquiries</span>
+              <div class="val">183</div>
+              <span style="font-size: 0.72rem; color: var(--accent-emerald);">Demo metric • Simulated</span>
+            </div>
+            <div class="dash-stat-card">
+              <span style="font-size: var(--fs-xs); color: var(--text-muted);">QR Code Scans</span>
+              <div class="val">492</div>
+              <span style="font-size: 0.72rem; color: var(--accent-brass);">Demo metric • Simulated</span>
+            </div>
+          </div>
+
+          <!-- Two Column Main Layout -->
+          <div class="dash-two-col">
+            
+            <!-- Left: Menu Highlights Table -->
+            <div class="dash-panel">
+              <div class="dash-panel-head">
+                <div>
+                  <h2 style="font-family: var(--font-heading); font-size: var(--fs-base); font-weight: 700; color: var(--text-primary); margin:0;">
+                    Live Menu Items (<span id="overviewRestaurantName">LUMÉ</span>)
+                  </h2>
+                  <span style="font-size: 0.75rem; color: var(--text-muted);">Synchronized with the customer digital menu</span>
+                </div>
+                <button type="button" class="btn btn-line btn-sm" id="btnGoToFullMenu">View All Items →</button>
+              </div>
+
+              <div class="table-responsive">
+                <table class="dash-table">
+                  <thead>
+                    <tr>
+                      <th>Dish</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      <th>Status</th>
+                      <th style="text-align:right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overviewMenuTbody">
+                    <!-- Populated dynamically by dashboard.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Right: Quick Restaurant Details & Quick Actions -->
+            <div style="display:flex; flex-direction:column; gap: var(--space-6);">
+              
+              <!-- Quick Restaurant Info Card -->
+              <div class="dash-panel">
+                <div class="dash-panel-head">
+                  <h2 style="font-family: var(--font-heading); font-size: var(--fs-base); font-weight: 700; color: var(--text-primary); margin:0;">
+                    Restaurant Identity
+                  </h2>
+                  <button type="button" class="btn btn-ghost btn-sm" id="btnQuickEditProfile" style="font-size:0.75rem; color:var(--accent-brass);">Edit Profile →</button>
+                </div>
+                <div style="font-size: var(--fs-xs); display:flex; flex-direction:column; gap: var(--space-3);">
+                  <div>
+                    <span style="color: var(--text-muted); display:block;">Restaurant Name</span>
+                    <span style="color: var(--text-primary); font-weight:600;" id="quickRestName">LUMÉ</span>
+                  </div>
+                  <div>
+                    <span style="color: var(--text-muted); display:block;">Location</span>
+                    <span style="color: var(--text-primary); font-weight:500;" id="quickRestAddress">Rue Gouraud, Gemmayzeh, Beirut</span>
+                  </div>
+                  <div>
+                    <span style="color: var(--text-muted); display:block;">WhatsApp Ordering Line</span>
+                    <span style="color: var(--accent-brass); font-weight:600;" id="quickRestWhatsapp">+961 1 234 567</span>
+                  </div>
+                  <div>
+                    <span style="color: var(--text-muted); display:block;">Operating Hours</span>
+                    <span style="color: var(--text-secondary);">Mon–Sun • 12:00 PM – 12:00 AM</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Actions Panel -->
+              <div class="dash-panel" style="background: rgba(200, 169, 126, 0.05); border-color: rgba(200, 169, 126, 0.25);">
+                <h3 style="font-family: var(--font-heading); font-size: var(--fs-sm); color: var(--accent-brass); margin-bottom: 8px;">
+                  Quick Actions
+                </h3>
+                <p style="font-size: var(--fs-xs); color: var(--text-secondary); line-height: 1.5; margin-bottom: var(--space-4);">
+                  Quickly jump into menu customization, update restaurant details, or restore baseline defaults.
+                </p>
+                <div style="display:flex; flex-direction:column; gap: var(--space-2);">
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnQuickActionMenu">Edit Menu Dishes & Prices</button>
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnQuickActionProfile">Update Restaurant Profile</button>
+                  <button type="button" class="btn btn-line btn-sm" id="btnQuickActionReset" style="color: var(--accent-rose); border-color: rgba(244, 63, 94, 0.4);">Reset Demo Data to Defaults</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ==================================================================
+             VIEW 2: MENU MANAGEMENT
+             ================================================================== -->
+        <section class="dash-view" id="viewMenuItems" aria-label="Menu Management">
+          
+          <div class="dash-panel" style="margin-bottom: var(--space-6);">
+            <div class="dash-panel-head">
+              <div>
+                <h1 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 700; color: var(--text-primary); margin-bottom:4px;">
+                  Menu Management
+                </h1>
+                <p style="font-size: var(--fs-xs); color: var(--text-muted); margin:0;">
+                  Update dish names, prices, descriptions, and toggle item availability. Changes reflect immediately on your live website.
+                </p>
+              </div>
+              <a href="restaurants/lume/index.html#menu" target="_blank" rel="noopener" class="btn btn-line btn-sm">
+                Preview Live Menu ↗
+              </a>
+            </div>
+
+            <!-- Filter & Search Toolbar -->
+            <div class="dash-filter-bar">
+              <div class="category-pills" id="categoryFilterContainer">
+                <button type="button" class="category-pill active" data-category="all">All Items</button>
+                <button type="button" class="category-pill" data-category="starters">Starters</button>
+                <button type="button" class="category-pill" data-category="mains">Mains</button>
+                <button type="button" class="category-pill" data-category="pizza">Pizza</button>
+                <button type="button" class="category-pill" data-category="desserts">Desserts</button>
+                <button type="button" class="category-pill" data-category="drinks">Drinks</button>
+              </div>
+
+              <div class="dash-toolbar-actions">
+                <button type="button" class="btn btn-secondary btn-sm" id="btnToggleReorder" aria-pressed="false" title="Toggle menu reordering mode">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
+                  <span id="btnToggleReorderText">Reorder Menu</span>
+                </button>
+                <div class="dash-search-wrap">
+                  <svg class="dash-search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input type="text" id="menuSearchInput" class="dash-search-input" placeholder="Search dishes or ingredients..." aria-label="Search menu items">
+                </div>
+              </div>
+            </div>
+
+            <!-- Reorder Mode Active Banner -->
+            <div class="reorder-mode-banner" id="reorderModeBanner" role="status" aria-live="polite">
+              <div style="display:flex; align-items:center; gap:var(--space-2); min-width:0;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
+                <span><strong>Reorder Mode:</strong> Drag rows via <strong>⠿</strong> handle or tap <strong>▲ / ▼</strong> to sequence dishes. Order synchronizes live to LUMÉ.</span>
+              </div>
+              <button type="button" class="btn btn-ghost btn-sm" id="btnDoneReorder" style="color:var(--accent-brass); padding:0.25rem 0.75rem; font-size:0.75rem; border:1px solid rgba(200,169,126,0.3); flex-shrink:0;">Done</button>
+            </div>
+
+            <!-- Menu Items Table -->
+            <div class="table-responsive">
+              <table class="dash-table" id="fullMenuTable">
+                <thead>
+                  <tr>
+                    <th style="width:84px;">Order</th>
+                    <th>Dish Details</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Dietary Tags</th>
+                    <th>Availability</th>
+                    <th style="text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="fullMenuTbody">
+                  <!-- Populated dynamically by dashboard.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <div id="menuEmptyNotice" style="display:none; text-align:center; padding: var(--space-10) var(--space-4); color:var(--text-muted);">
+              <p style="font-size: var(--fs-sm); color: var(--text-secondary); margin-bottom: var(--space-1);">No dishes found matching your filter criteria.</p>
+              <button type="button" class="btn btn-ghost btn-sm" id="btnResetSearchFilter" style="color:var(--accent-brass);">Clear Filters</button>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ==================================================================
+             VIEW 3: RESTAURANT PROFILE EDITOR
+             ================================================================== -->
+        <section class="dash-view" id="viewProfile" aria-label="Restaurant Profile Editor">
+          
+          <div class="dash-panel">
+            <div class="dash-panel-head">
+              <div>
+                <h1 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 700; color: var(--text-primary); margin-bottom:4px;">
+                  Restaurant Profile
+                </h1>
+                <p style="font-size: var(--fs-xs); color: var(--text-muted); margin:0;">
+                  Update your restaurant's core identity, story, location, and guest contact lines.
+                </p>
+              </div>
+              <div style="display:flex; gap: var(--space-2);">
+                <button type="button" class="btn btn-ghost btn-sm" id="btnDiscardProfile">Discard</button>
+                <button type="submit" form="profileForm" class="btn btn-primary btn-sm">Save Changes</button>
+              </div>
+            </div>
+
+            <form id="profileForm" novalidate style="margin-top: var(--space-4);">
+              
+              <h3 style="font-family: var(--font-heading); font-size: var(--fs-sm); color: var(--accent-brass); margin-bottom: var(--space-4);">
+                Brand & Concept
+              </h3>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="profName">Restaurant Name <span style="color:var(--accent-rose);">*</span></label>
+                  <input type="text" id="profName" class="form-control" required placeholder="e.g. LUMÉ">
+                  <span class="form-error-msg">Restaurant name is required.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profTagline">Tagline / Sub-concept</label>
+                  <input type="text" id="profTagline" class="form-control" placeholder="e.g. Modern Mediterranean Dining">
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="profEyebrow">Location Label / City</label>
+                  <input type="text" id="profEyebrow" class="form-control" placeholder="e.g. Beirut, Lebanon">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profCurrency">Menu Currency Symbol</label>
+                  <input type="text" id="profCurrency" class="form-control" style="max-width:120px;" placeholder="$">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profDesc">Hero Description / Kitchen Story</label>
+                <textarea id="profDesc" class="form-control" rows="3" placeholder="Seasonal ingredients, open fire cooking, and a table that feels like home..."></textarea>
+              </div>
+
+              <h3 style="font-family: var(--font-heading); font-size: var(--fs-sm); color: var(--accent-brass); margin-top: var(--space-6); margin-bottom: var(--space-4);">
+                Contact & Guest Direct Channels
+              </h3>
+
+              <div class="form-group">
+                <label class="form-label" for="profAddress">Physical Address <span style="color:var(--accent-rose);">*</span></label>
+                <input type="text" id="profAddress" class="form-control" required placeholder="e.g. Rue Gouraud, Gemmayzeh, Beirut">
+                <span class="form-error-msg">Physical address is required.</span>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="profPhone">Reservations Phone Line <span style="color:var(--accent-rose);">*</span></label>
+                  <input type="text" id="profPhone" class="form-control" required placeholder="e.g. +961 1 234 567">
+                  <span class="form-error-msg">Phone number is required.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profWhatsapp">WhatsApp Ordering Number <span style="color:var(--accent-rose);">*</span></label>
+                  <input type="text" id="profWhatsapp" class="form-control" required placeholder="e.g. +961 1 234 567">
+                  <span class="form-error-msg">WhatsApp number is required.</span>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="profEmail">Public Inquiries Email</label>
+                  <input type="email" id="profEmail" class="form-control" placeholder="e.g. reservations@lume-restaurant.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profDirections">Google Maps Directions URL</label>
+                  <input type="url" id="profDirections" class="form-control" placeholder="https://maps.google.com/?q=...">
+                </div>
+              </div>
+
+              <div class="form-actions-row" style="margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--border-subtle);">
+                <button type="button" class="btn btn-ghost btn-sm" id="btnProfileResetDemo" style="color:var(--accent-rose);">
+                  Reset All to Factory Defaults
+                </button>
+                <div style="display:flex; gap: var(--space-3);">
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnProfileCancel">Discard Changes</button>
+                  <button type="submit" class="btn btn-primary btn-sm">Save Profile Changes</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+        </section>
+
+        <!-- ==================================================================
+             VIEW 4: WEBSITE CONTENT EDITOR
+             ================================================================== -->
+        <section class="dash-view" id="viewWebsiteContent" aria-label="Website Content Editor">
+          
+          <!-- View Header -->
+          <div style="margin-bottom: var(--space-6); display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); flex-wrap: wrap;">
+            <div>
+              <h1 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">
+                Website Content
+              </h1>
+              <p style="font-size: var(--fs-xs); color: var(--text-muted); margin: 0; max-width: 600px;">
+                Customize the copy, headlines, narratives, and call-to-actions across your public restaurant website.
+              </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+              <a href="restaurants/lume/index.html" target="_blank" rel="noopener" class="btn btn-line btn-sm">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>View Live Site ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Section 1: Hero Section -->
+          <div class="dash-panel" style="margin-bottom: var(--space-6);">
+            <div class="dash-panel-head">
+              <div>
+                <h2 style="font-family: var(--font-heading); font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">
+                  1. Hero Section
+                </h2>
+                <p style="font-size: var(--fs-xs); color: var(--text-muted); margin: 0;">
+                  Above-the-fold headline, tagline, and call-to-action buttons.
+                </p>
+              </div>
+              <button type="submit" form="formContentHero" class="btn btn-primary btn-sm" id="btnSaveHero">Save Hero</button>
+            </div>
+
+            <form id="formContentHero" novalidate style="margin-top: var(--space-4);">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="heroEyebrowInput">Hero Eyebrow</label>
+                  <input type="text" id="heroEyebrowInput" class="form-control" placeholder="e.g. Beirut, Lebanon">
+                  <span class="form-hint">Short text displayed above the main heading.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="heroHeadingInput">Hero Heading</label>
+                  <input type="text" id="heroHeadingInput" class="form-control" placeholder="e.g. LUMÉ">
+                  <span class="form-hint">Main headline visitors see when they open your website.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="heroTaglineInput">Hero Tagline</label>
+                <input type="text" id="heroTaglineInput" class="form-control" placeholder="e.g. Modern Mediterranean Dining">
+                <span class="form-hint">Sub-headline introducing your restaurant concept.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="heroDescInput">Hero Description</label>
+                <textarea id="heroDescInput" class="form-control" rows="3" placeholder="Seasonal ingredients, open fire cooking, and a table that feels like home..."></textarea>
+                <span class="form-hint">Supporting text displayed beneath the heading.</span>
+              </div>
+
+              <!-- Primary Button Configuration -->
+              <h3 style="font-family: var(--font-heading); font-size: var(--fs-xs); color: var(--accent-brass); margin-top: var(--space-5); margin-bottom: var(--space-3); text-transform: uppercase; letter-spacing: 0.05em;">
+                Primary Button
+              </h3>
+              <div class="form-group" style="margin-bottom: var(--space-3);">
+                <label class="form-toggle-label" for="heroPrimaryEnabled">
+                  <input type="checkbox" id="heroPrimaryEnabled">
+                  <span>Enable Primary Call-to-Action</span>
+                </label>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="heroPrimaryTextInput">Button Text</label>
+                  <input type="text" id="heroPrimaryTextInput" class="form-control" placeholder="e.g. View Menu">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="heroPrimaryLinkInput">Button Link / Target</label>
+                  <input type="text" id="heroPrimaryLinkInput" class="form-control" placeholder="e.g. #menu">
+                </div>
+              </div>
+
+              <!-- Secondary Button Configuration -->
+              <h3 style="font-family: var(--font-heading); font-size: var(--fs-xs); color: var(--accent-brass); margin-top: var(--space-4); margin-bottom: var(--space-3); text-transform: uppercase; letter-spacing: 0.05em;">
+                Secondary Button
+              </h3>
+              <div class="form-group" style="margin-bottom: var(--space-3);">
+                <label class="form-toggle-label" for="heroSecondaryEnabled">
+                  <input type="checkbox" id="heroSecondaryEnabled">
+                  <span>Enable Secondary Call-to-Action</span>
+                </label>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="heroSecondaryTextInput">Button Text</label>
+                  <input type="text" id="heroSecondaryTextInput" class="form-control" placeholder="e.g. Reserve a Table">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="heroSecondaryLinkInput">Button Link / Target</label>
+                  <input type="text" id="heroSecondaryLinkInput" class="form-control" placeholder="e.g. #contact">
+                </div>
+              </div>
+
+              <div class="form-actions-row" style="margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary btn-sm">Save Hero Section</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Section 2: Menu Section -->
+          <div class="dash-panel" style="margin-bottom: var(--space-6);">
+            <div class="dash-panel-head">
+              <div>
+                <h2 style="font-family: var(--font-heading); font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">
+                  2. Menu Section
+                </h2>
+                <p style="font-size: var(--fs-xs); color: var(--text-muted); margin: 0;">
+                  Introductory header for the public digital menu section.
+                </p>
+              </div>
+              <button type="submit" form="formContentMenuSection" class="btn btn-primary btn-sm" id="btnSaveMenuSection">Save Menu Section</button>
+            </div>
+
+            <form id="formContentMenuSection" novalidate style="margin-top: var(--space-4);">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="menuEyebrowInput">Menu Eyebrow</label>
+                  <input type="text" id="menuEyebrowInput" class="form-control" placeholder="e.g. Our Menu">
+                  <span class="form-hint">Small pill text displayed above the menu title.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="menuHeadingInput">Menu Heading</label>
+                  <input type="text" id="menuHeadingInput" class="form-control" placeholder="e.g. Simple ingredients. Bold flavors.">
+                  <span class="form-hint">Main header for the customer menu catalog.</span>
+                </div>
+              </div>
+
+              <div class="form-actions-row" style="margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary btn-sm">Save Menu Section</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Section 3: About Section -->
+          <div class="dash-panel" style="margin-bottom: var(--space-6);">
+            <div class="dash-panel-head">
+              <div>
+                <h2 style="font-family: var(--font-heading); font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">
+                  3. About Section
+                </h2>
+                <p style="font-size: var(--fs-xs); color: var(--text-muted); margin: 0;">
+                  Narrative story, culinary philosophy, and hospitality values.
+                </p>
+              </div>
+              <button type="submit" form="formContentAbout" class="btn btn-primary btn-sm" id="btnSaveAbout">Save About</button>
+            </div>
+
+            <form id="formContentAbout" novalidate style="margin-top: var(--space-4);">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="aboutEyebrowInput">About Eyebrow</label>
+                  <input type="text" id="aboutEyebrowInput" class="form-control" placeholder="e.g. About LUMÉ">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="aboutHeadingInput">About Heading</label>
+                  <input type="text" id="aboutHeadingInput" class="form-control" placeholder="e.g. A table shaped by the Mediterranean">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="aboutIntroInput">About Lead / Intro</label>
+                <textarea id="aboutIntroInput" class="form-control" rows="2" placeholder="LUMÉ brings together the warmth of Mediterranean hospitality..."></textarea>
+                <span class="form-hint">Lead statement highlighting your concept.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="aboutDescInput">About Full Body Story</label>
+                <textarea id="aboutDescInput" class="form-control" rows="4" placeholder="Founded by a small team of cooks who grew up between coastal kitchens..."></textarea>
+                <span class="form-hint">Detailed background and origin story.</span>
+              </div>
+
+              <div class="form-actions-row" style="margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary btn-sm">Save About Section</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Section 4: About Statistics -->
+          <div class="dash-panel" style="margin-bottom: var(--space-6);">
+            <div class="dash-panel-head">
+              <div>
+                <h2 style="font-family: var(--font-heading); font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">
+                  4. About Statistics
+                </h2>
+                <p style="font-size: var(--fs-xs); color: var(--text-muted); margin: 0;">
+                  Key figures showcasing experience and scale (maximum 4).
+                </p>
+              </div>
+              <div style="display:flex; gap: var(--space-2); align-items:center;">
+                <button type="button" class="btn btn-secondary btn-sm" id="btnAddAboutStat">+ Add Statistic</button>
+                <button type="submit" form="formContentAboutStats" class="btn btn-primary btn-sm" id="btnSaveAboutStats">Save Statistics</button>
+              </div>
+            </div>
+
+            <form id="formContentAboutStats" novalidate style="margin-top: var(--space-4);">
+              <div class="stats-builder-list" id="aboutStatsList">
+                <!-- Populated dynamically -->
+              </div>
+              <div class="form-actions-row" style="margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); justify-content: space-between;">
+                <span style="font-size: var(--fs-xs); color: var(--text-muted);" id="statsCounterNotice">2 / 4 statistics configured</span>
+                <button type="submit" class="btn btn-primary btn-sm">Save Statistics</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Section 5: Featured Dish -->
+          <div class="dash-panel" style="margin-bottom: var(--space-6);">
+            <div class="dash-panel-head">
+              <div>
+                <h2 style="font-family: var(--font-heading); font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">
+                  5. Featured Dish
+                </h2>
+                <p style="font-size: var(--fs-xs); color: var(--text-muted); margin: 0;">
+                  Spotlight a signature dish on the homepage referencing your live menu.
+                </p>
+              </div>
+              <button type="submit" form="formContentFeatured" class="btn btn-primary btn-sm" id="btnSaveFeatured">Save Featured Dish</button>
+            </div>
+
+            <form id="formContentFeatured" novalidate style="margin-top: var(--space-4);">
+              <div class="form-group">
+                <label class="form-label" for="featuredDishSelect">
+                  Select Featured Menu Item <span style="color:var(--accent-rose);">*</span>
+                </label>
+                <select id="featuredDishSelect" class="form-control" required>
+                  <!-- Populated dynamically with menu items -->
+                </select>
+                <span class="form-hint">Stores only the menu item reference. Dish price, image, and details remain owned by Menu Items.</span>
+              </div>
+
+              <!-- Read-only Dish Preview Container -->
+              <div class="featured-dish-preview-card" id="featuredDishPreviewWrap">
+                <!-- Populated dynamically from actual menu item -->
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="featuredEyebrowInput">Featured Section Eyebrow</label>
+                  <input type="text" id="featuredEyebrowInput" class="form-control" placeholder="e.g. Chef's Choice">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="featuredHeadingInput">Section Heading</label>
+                  <input type="text" id="featuredHeadingInput" class="form-control" placeholder="e.g. Charcoal Grilled Sea Bass">
+                  <span class="form-hint">Customize the heading independently from the dish name if desired.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="featuredDescInput">Featured Section Description</label>
+                <textarea id="featuredDescInput" class="form-control" rows="3" placeholder="Whole sea bass, slow-charred over an open flame..."></textarea>
+                <span class="form-hint">Custom narrative or tasting notes for this featured spotlight.</span>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="featuredButtonTextInput">Button Text</label>
+                  <input type="text" id="featuredButtonTextInput" class="form-control" placeholder="e.g. Discover the Dish">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="featuredButtonLinkInput">Button Link / Anchor</label>
+                  <input type="text" id="featuredButtonLinkInput" class="form-control" placeholder="e.g. #featured">
+                </div>
+              </div>
+
+              <div class="form-actions-row" style="margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary btn-sm">Save Featured Dish</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Section 6: Final Call to Action -->
+          <div class="dash-panel" style="margin-bottom: var(--space-6);">
+            <div class="dash-panel-head">
+              <div>
+                <h2 style="font-family: var(--font-heading); font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">
+                  6. Final Call to Action
+                </h2>
+                <p style="font-size: var(--fs-xs); color: var(--text-muted); margin: 0;">
+                  Closing invitation banner before the footer prompting reservations.
+                </p>
+              </div>
+              <button type="submit" form="formContentFinalCta" class="btn btn-primary btn-sm" id="btnSaveFinalCta">Save Call To Action</button>
+            </div>
+
+            <form id="formContentFinalCta" novalidate style="margin-top: var(--space-4);">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="ctaEyebrowInput">CTA Eyebrow</label>
+                  <input type="text" id="ctaEyebrowInput" class="form-control" placeholder="e.g. Reservations">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ctaHeadingInput">CTA Headline</label>
+                  <input type="text" id="ctaHeadingInput" class="form-control" placeholder="e.g. Good food deserves good company.">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="ctaDescInput">CTA Description / Supporting Subtitle</label>
+                <textarea id="ctaDescInput" class="form-control" rows="2" placeholder="e.g. Join us for dinner."></textarea>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="ctaButtonTextInput">Button Text</label>
+                  <input type="text" id="ctaButtonTextInput" class="form-control" placeholder="e.g. Back To Menu">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ctaButtonLinkInput">Button Link / Target</label>
+                  <input type="text" id="ctaButtonLinkInput" class="form-control" placeholder="e.g. #menu">
+                </div>
+              </div>
+
+              <div class="form-actions-row" style="margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary btn-sm">Save Call To Action</button>
+              </div>
+            </form>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ==================================================================
+       MODAL 1: EDIT MENU ITEM
+       ================================================================== -->
+  <div class="dash-modal-scrim" id="editModalScrim" aria-hidden="true"></div>
+  <div class="dash-modal" id="editItemModal" role="dialog" aria-modal="true" aria-labelledby="editModalTitle" aria-hidden="true">
+    <div class="dash-modal-head">
+      <h2 class="dash-modal-title" id="editModalTitle">Edit Menu Item</h2>
+      <button type="button" class="dash-modal-close" id="btnEditModalClose" aria-label="Close dialog">&times;</button>
+    </div>
+    
+    <form id="editItemForm" novalidate>
+      <input type="hidden" id="editItemId">
+      
+      <!-- Dish Photo Preview (Placeholder for PHP Backend Stage) -->
+      <div class="form-group">
+        <label class="form-label">Dish Photo</label>
+        <div class="dish-photo-manager">
+          <div class="dish-photo-preview-wrap">
+            <img id="editItemPhotoPreview" src="" alt="Dish preview" class="dish-photo-preview">
+          </div>
+          <div class="dish-photo-actions">
+            <div style="display:flex; align-items:center; gap:var(--space-2); flex-wrap:wrap;">
+              <button type="button" class="btn btn-secondary btn-sm" id="btnChangePhoto" style="opacity:0.85;" title="Photo upload will be unlocked with the PHP backend">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                Change Photo
+              </button>
+              <span class="badge badge-subtle" style="font-size:0.62rem; color:var(--text-muted);">PHP Backend Stage</span>
+            </div>
+            <span class="dish-photo-hint">
+              Dish photo preview (4:3 aspect ratio). Server-side upload, processing, and persistent storage will be implemented in the future PHP backend stage.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="editItemName">Dish Name <span style="color:var(--accent-rose);">*</span></label>
+        <input type="text" id="editItemName" class="form-control" required placeholder="e.g. Grilled Sea Bass">
+        <span class="form-error-msg">Dish name is required.</span>
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-group">
+          <label class="form-label" for="editItemPrice">Price ($) <span style="color:var(--accent-rose);">*</span></label>
+          <input type="number" id="editItemPrice" class="form-control" min="0" step="0.5" required placeholder="24.00">
+          <span class="form-error-msg">Valid price is required.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="editItemCategory">Category <span style="color:var(--accent-rose);">*</span></label>
+          <select id="editItemCategory" class="form-control" required>
+            <option value="starters">Starters</option>
+            <option value="mains">Mains</option>
+            <option value="pizza">Pizza</option>
+            <option value="desserts">Desserts</option>
+            <option value="drinks">Drinks</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="editItemDesc">Menu Description</label>
+        <textarea id="editItemDesc" class="form-control" rows="2" placeholder="Charred vegetables, lemon herb butter..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="editItemIngredients">Ingredients (Shown in detail modal)</label>
+        <input type="text" id="editItemIngredients" class="form-control" placeholder="Whole sea bass, seasonal vegetables, lemon, herb butter">
+      </div>
+
+      <!-- Dietary Tags -->
+      <div class="form-group">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+          <label class="form-label" style="margin-bottom:0;">Dietary Tags</label>
+          <button type="button" class="btn-add-tag-trigger" id="btnAddDietaryTag" aria-label="Add dietary tag">
+            + Add Tag
+          </button>
+        </div>
+        <div class="assigned-tags-container" id="editItemDietaryTags" role="region" aria-label="Assigned dietary tags">
+          <!-- Populated dynamically with tag pills & remove buttons -->
+        </div>
+        <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 4px;">
+          Shown in LUMÉ dish details modal. Click × on a pill to unassign.
+        </span>
+      </div>
+
+      <!-- Dish Labels -->
+      <div class="form-group">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+          <label class="form-label" style="margin-bottom:0;">Dish Labels</label>
+          <button type="button" class="btn-add-tag-trigger" id="btnAddDishLabel" aria-label="Add dish label">
+            + Add Label
+          </button>
+        </div>
+        <div class="assigned-tags-container" id="editItemDishLabels" role="region" aria-label="Assigned dish labels">
+          <!-- Populated dynamically with label pills & remove buttons -->
+        </div>
+        <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 4px;">
+          Displayed as badges on LUMÉ menu cards (e.g. Popular, Chef's Choice). Click × to unassign.
+        </span>
+      </div>
+
+      <div class="form-group" style="margin-top: var(--space-2); margin-bottom: var(--space-5);">
+        <label class="checkbox-wrap" style="display:flex; align-items:center; gap:var(--space-2); cursor:pointer;">
+          <input type="checkbox" id="editItemAvailable" style="width:16px; height:16px; accent-color:var(--accent-brass);">
+          <span style="font-size: var(--fs-xs); color: var(--text-primary); font-weight: 500;">
+            Available on customer digital menu (In Stock)
+          </span>
+        </label>
+        <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 24px;">
+          Unchecking this marks the dish as 86'd and hides it from guest orders.
+        </span>
+      </div>
+
+      <div style="display:flex; align-items:center; justify-content:flex-end; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--border-subtle);">
+        <button type="button" class="btn btn-ghost btn-sm" id="btnEditModalCancel">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ==================================================================
+       MODAL 2: RESET DEMO DATA CONFIRMATION
+       ================================================================== -->
+  <div class="dash-modal-scrim" id="resetModalScrim" aria-hidden="true"></div>
+  <div class="dash-modal" id="resetModal" role="alertdialog" aria-modal="true" aria-labelledby="resetModalTitle" aria-describedby="resetModalDesc" aria-hidden="true">
+    <div class="dash-modal-head">
+      <div style="display:flex; align-items:center; gap: var(--space-2);">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F43F5E" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <h2 class="dash-modal-title" id="resetModalTitle" style="color: #FB7185;">Reset Demo Data?</h2>
+      </div>
+      <button type="button" class="dash-modal-close" id="btnResetModalClose" aria-label="Close dialog">&times;</button>
+    </div>
+    
+    <p id="resetModalDesc" style="font-size: var(--fs-xs); color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-6);">
+      This action will restore the original LUMÉ demo data. All customized restaurant profile fields, adjusted dish prices, and availability settings will be reverted to factory defaults.
+    </p>
+
+    <div style="display:flex; align-items:center; justify-content:flex-end; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--border-subtle);">
+      <button type="button" class="btn btn-ghost btn-sm" id="btnResetModalCancel">Cancel</button>
+      <button type="button" class="btn btn-sm" id="btnResetModalConfirm" style="background:#F43F5E; color:#fff; border:none; font-weight:600;">Yes, Restore Defaults</button>
+    </div>
+  </div>
+
+  <!-- ==================================================================
+       MODAL 3: SEARCHABLE TAG & LABEL PICKER
+       ================================================================== -->
+  <div class="dash-modal-scrim" id="tagPickerScrim" aria-hidden="true" style="z-index: 210;"></div>
+  <div class="dash-modal tag-picker-modal" id="tagPickerModal" role="dialog" aria-modal="true" aria-labelledby="tagPickerTitle" aria-hidden="true" style="z-index: 211; max-width: 400px;">
+    <div class="dash-modal-head">
+      <h2 class="dash-modal-title" id="tagPickerTitle" style="font-size: var(--fs-sm);">Add Tag</h2>
+      <button type="button" class="dash-modal-close" id="btnTagPickerClose" aria-label="Close tag picker">&times;</button>
+    </div>
+    
+    <div class="tag-picker-body" style="padding: 0 var(--space-1) var(--space-2);">
+      <!-- Instant Search Input -->
+      <div class="tag-picker-search-wrap">
+        <svg class="dash-search-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="tagPickerSearchInput" class="dash-search-input" style="width:100%; padding-left:36px;" placeholder="Search or type new tag..." aria-label="Search or add tag">
+      </div>
+
+      <!-- Available Tag List -->
+      <div class="tag-picker-list-wrap">
+        <div class="tag-picker-section-title">Available from Library</div>
+        <div class="tag-picker-list" id="tagPickerList" role="listbox" aria-label="Available tags">
+          <!-- Dynamically rendered -->
+        </div>
+      </div>
+
+      <!-- Create Custom Tag Row -->
+      <div class="tag-picker-create-wrap" id="tagPickerCreateWrap" style="display:none; margin-top:var(--space-3);">
+        <button type="button" class="btn-create-tag" id="btnTagPickerCreate">
+          <span class="create-tag-icon">+</span>
+          <span>Add <strong id="tagPickerCreateName">"Tag"</strong> to library</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; justify-content:flex-end; gap:var(--space-2); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); margin-top:var(--space-3);">
+      <button type="button" class="btn btn-ghost btn-sm" id="btnTagPickerCancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="dash-toast" id="dashToast" role="status" aria-live="polite">
+    <span id="dashToastIcon">✓</span>
+    <span id="dashToastMessage">Saved successfully</span>
+  </div>
+
+  <script src="js/restaurant-store.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -165,7 +165,7 @@ class ApiClient {
           resolve({
             success: true,
             session,
-            redirectTo: "dashboard-preview.html"
+            redirectTo: "dashboard.html"
           });
         } else {
           reject(new Error("Invalid email or password. You can use 'demo@restaurant.com' for instant testing."));

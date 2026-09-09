@@ -38,6 +38,57 @@ const DEMO_DATA = {
     ]
   },
   featuredDishId: 2,
+  websiteContent: {
+    hero: {
+      eyebrow: "Beirut, Lebanon",
+      heading: "LUMÉ",
+      tagline: "Modern Mediterranean Dining",
+      description: "Seasonal ingredients, open fire cooking, and a table that feels like home — reimagined for tonight.",
+      primaryButtonEnabled: true,
+      primaryButtonText: "View Menu",
+      primaryButtonLink: "#menu",
+      secondaryButtonEnabled: true,
+      secondaryButtonText: "Reserve a Table",
+      secondaryButtonLink: "#contact"
+    },
+    menuSection: {
+      eyebrow: "Our Menu",
+      heading: "Simple ingredients. Bold flavors."
+    },
+    about: {
+      eyebrow: "About LUMÉ",
+      heading: "A table shaped by the Mediterranean",
+      intro: "LUMÉ brings together the warmth of Mediterranean hospitality and contemporary cuisine.",
+      description: "Founded by a small team of cooks who grew up between coastal kitchens and family tables, LUMÉ is built around fire, citrus, and patience. Every dish begins with what's in season and ends on a plate meant to be shared."
+    },
+    aboutStats: [
+      {
+        id: "experience",
+        value: "15+",
+        label: "Years of Experience"
+      },
+      {
+        id: "dishes",
+        value: "40+",
+        label: "Signature Dishes"
+      }
+    ],
+    featured: {
+      eyebrow: "Chef's Choice",
+      heading: "Charcoal Grilled Sea Bass",
+      description: "Whole sea bass, slow-charred over an open flame and finished with lemon herb butter, served alongside vegetables pulled straight from the coals.",
+      menuItemId: 2,
+      buttonText: "Discover the Dish",
+      buttonLink: "#featured"
+    },
+    finalCta: {
+      eyebrow: "Reservations",
+      heading: "Good food deserves good company.",
+      description: "Join us for dinner.",
+      buttonText: "Back To Menu",
+      buttonLink: "#menu"
+    }
+  },
   categories: [
     { id: "starters", label: "Starters" },
     { id: "mains",    label: "Mains" },
@@ -148,14 +199,10 @@ const DEMO_DATA = {
   ]
 };
 
-/**
- * Dedicated Data-Loading Layer
- * Currently returns local demo data.
- * To switch to menu.json in the next phase, replace the return statement with:
- *   const response = await fetch("./data/menu.json");
- *   return await response.json();
- */
 async function loadRestaurantData() {
+  if (typeof window !== "undefined" && window.RestaurantStore) {
+    return window.RestaurantStore.getRestaurant();
+  }
   return DEMO_DATA;
 }
 
@@ -260,27 +307,58 @@ function renderTabs(categories, activeCategoryId) {
   `).join("");
 }
 
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function renderGrid(menuItems, activeCategoryId, currency) {
   if (!DOM.menuGrid) return;
-  const items = menuItems.filter(item => item.category === activeCategoryId);
+  const items = menuItems
+    .filter(item => item.category === activeCategoryId && item.available !== false)
+    .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
   DOM.menuGrid.setAttribute("aria-labelledby", `tab-${activeCategoryId}`);
 
-  DOM.menuGrid.innerHTML = items.map((item, i) => `
+  if (items.length === 0) {
+    DOM.menuGrid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--color-muted, #94a3b8);">
+        <p style="font-family: var(--font-serif, serif); font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-text, #fff);">No dishes currently available in this category.</p>
+        <p style="font-size: 0.85rem;">Please select another category above.</p>
+      </div>
+    `;
+    return;
+  }
+
+  DOM.menuGrid.innerHTML = items.map((item, i) => {
+    const labels = Array.isArray(item.labels) && item.labels.length > 0
+      ? item.labels
+      : (item.popular ? ['Popular'] : []);
+    const badgesHtml = labels.length > 0
+      ? `<span class="dish-card__badges">${labels.map(lbl => `<span class="dish-card__badge" title="${escapeHtml(lbl)}">${escapeHtml(lbl)}</span>`).join('')}</span>`
+      : '';
+
+    return `
     <button class="dish-card"
             data-id="${item.id}"
             style="animation-delay:${i * 60}ms"
-            aria-label="${item.name}, ${currency}${item.price}. ${item.description}">
+            aria-label="${escapeHtml(item.name)}, ${currency}${item.price}. ${escapeHtml(item.description)}">
       <span class="dish-card__frame">
-        <img src="${item.image}" alt="${item.name}" loading="lazy">
-        ${item.popular ? '<span class="dish-card__badge">Popular</span>' : ""}
+        <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy">
+        ${badgesHtml}
       </span>
       <span class="dish-card__row">
-        <span class="dish-card__name">${item.name}</span>
+        <span class="dish-card__name">${escapeHtml(item.name)}</span>
         <span class="dish-card__price">${currency}${item.price}</span>
       </span>
-      <span class="dish-card__desc">${item.description}</span>
+      <span class="dish-card__desc">${escapeHtml(item.description)}</span>
     </button>
-  `).join("");
+  `;
+  }).join("");
 }
 
 function selectCategory(categoryId, focusTab = false) {
@@ -539,8 +617,11 @@ function openModal(dishId) {
   }
 
   if (DOM.modalTags) {
-    DOM.modalTags.innerHTML = item.tags && item.tags.length
-      ? item.tags.map(tag => `<span>${tag}</span>`).join("")
+    const tags = (Array.isArray(item.dietaryTags) && item.dietaryTags.length)
+      ? item.dietaryTags
+      : (Array.isArray(item.tags) ? item.tags : []);
+    DOM.modalTags.innerHTML = tags.length
+      ? tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join("")
       : "";
   }
 
@@ -883,25 +964,299 @@ function attachEventDelegation() {
 }
 
 /* ===========================================================
-   13. Application Initialization
+   13. Dynamic Restaurant Info Renderer
    =========================================================== */
+function renderRestaurantInfo(restaurant, featuredDish, websiteContent) {
+  if (!restaurant) return;
+  const wc = websiteContent || {};
+
+  // 1. Page Title & Meta Description
+  if (restaurant.name) {
+    document.title = `${restaurant.name} — ${restaurant.tagline || "Modern Mediterranean Dining"}`;
+  }
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && restaurant.name) {
+    metaDesc.setAttribute(
+      "content",
+      `${restaurant.name} is a ${restaurant.tagline || "restaurant"} in ${restaurant.eyebrow || "Beirut, Lebanon"}. Explore our menu, reserve a table, and discover contemporary Mediterranean cuisine.`
+    );
+  }
+
+  // 2. Brand Marks in Navbar and Footer
+  const brandNames = document.querySelectorAll(".nav__name");
+  brandNames.forEach(el => {
+    el.textContent = restaurant.name || "LUMÉ";
+  });
+  const navBrand = document.querySelector(".nav__brand");
+  if (navBrand) navBrand.setAttribute("aria-label", `${restaurant.name || "LUMÉ"} home`);
+
+  // 3. Hero Content
+  const heroEyebrow = document.getElementById("heroEyebrow");
+  if (heroEyebrow) {
+    heroEyebrow.textContent = (wc.hero && wc.hero.eyebrow !== undefined && wc.hero.eyebrow !== "")
+      ? wc.hero.eyebrow
+      : (restaurant.eyebrow || "Beirut, Lebanon");
+  }
+
+  const heroTitle = document.getElementById("heroTitle");
+  if (heroTitle) {
+    heroTitle.textContent = (wc.hero && wc.hero.heading !== undefined && wc.hero.heading !== "")
+      ? wc.hero.heading
+      : (restaurant.name || "LUMÉ");
+  }
+
+  const heroTagline = document.getElementById("heroTagline");
+  if (heroTagline) {
+    heroTagline.textContent = (wc.hero && wc.hero.tagline !== undefined && wc.hero.tagline !== "")
+      ? wc.hero.tagline
+      : (restaurant.tagline || "Modern Mediterranean Dining");
+  }
+
+  const heroSub = document.getElementById("heroSub");
+  if (heroSub) {
+    heroSub.textContent = (wc.hero && wc.hero.description !== undefined && wc.hero.description !== "")
+      ? wc.hero.description
+      : (restaurant.description || "");
+  }
+
+  // Hero CTAs
+  const heroCtas = document.querySelector(".hero__ctas");
+  if (heroCtas && wc.hero) {
+    const primaryBtn = heroCtas.querySelector(".btn--solid");
+    if (primaryBtn) {
+      if (wc.hero.primaryButtonEnabled === false) {
+        primaryBtn.style.display = "none";
+      } else {
+        primaryBtn.style.display = "";
+        if (wc.hero.primaryButtonText) primaryBtn.textContent = wc.hero.primaryButtonText;
+        if (wc.hero.primaryButtonLink) primaryBtn.setAttribute("href", wc.hero.primaryButtonLink);
+      }
+    }
+    const secondaryBtn = heroCtas.querySelector(".btn--ghost");
+    if (secondaryBtn) {
+      if (wc.hero.secondaryButtonEnabled === false) {
+        secondaryBtn.style.display = "none";
+      } else {
+        secondaryBtn.style.display = "";
+        if (wc.hero.secondaryButtonText) secondaryBtn.textContent = wc.hero.secondaryButtonText;
+        if (wc.hero.secondaryButtonLink) secondaryBtn.setAttribute("href", wc.hero.secondaryButtonLink);
+      }
+    }
+  }
+
+  // 3b. Menu Section Header
+  const menuSectionEyebrow = document.querySelector(".menu-section .eyebrow");
+  if (menuSectionEyebrow && wc.menuSection && wc.menuSection.eyebrow) {
+    menuSectionEyebrow.textContent = wc.menuSection.eyebrow;
+  }
+  const menuSectionTitle = document.querySelector(".menu-section .section-title");
+  if (menuSectionTitle && wc.menuSection && wc.menuSection.heading) {
+    menuSectionTitle.textContent = wc.menuSection.heading;
+  }
+
+  // 4. Featured Dish Section
+  if (featuredDish) {
+    const featuredEyebrow = document.querySelector(".featured__content .eyebrow");
+    if (featuredEyebrow && wc.featured && wc.featured.eyebrow) {
+      featuredEyebrow.textContent = wc.featured.eyebrow;
+    }
+
+    const featuredTitle = document.getElementById("featuredTitle");
+    if (featuredTitle) {
+      featuredTitle.textContent = (wc.featured && wc.featured.heading)
+        ? wc.featured.heading
+        : (featuredDish.name || "");
+    }
+
+    const featuredDesc = document.getElementById("featuredDesc");
+    if (featuredDesc) {
+      featuredDesc.textContent = (wc.featured && wc.featured.description)
+        ? wc.featured.description
+        : (featuredDish.description || "");
+    }
+
+    const featuredPrice = document.getElementById("featuredPrice");
+    if (featuredPrice && featuredDish.price !== undefined) {
+      featuredPrice.textContent = `${restaurant.currency || "$"}${featuredDish.price}`;
+    }
+
+    const discoverBtn = document.getElementById("discoverBtn");
+    if (discoverBtn) {
+      discoverBtn.setAttribute("data-id", featuredDish.id);
+      if (wc.featured && wc.featured.buttonText) {
+        discoverBtn.textContent = wc.featured.buttonText;
+      }
+    }
+
+    const featuredImg = document.querySelector(".featured__media img");
+    if (featuredImg && featuredDish.image) {
+      featuredImg.setAttribute("src", featuredDish.image);
+      featuredImg.setAttribute("alt", featuredDish.name || "Featured dish");
+    }
+  }
+
+  // 5. About Section
+  const aboutEyebrow = document.getElementById("aboutEyebrow");
+  if (aboutEyebrow) {
+    aboutEyebrow.textContent = (wc.about && wc.about.eyebrow)
+      ? wc.about.eyebrow
+      : `About ${restaurant.name || "LUMÉ"}`;
+  }
+
+  const aboutTitle = document.querySelector(".about__text .section-title");
+  if (aboutTitle && wc.about && wc.about.heading) {
+    aboutTitle.textContent = wc.about.heading;
+  }
+
+  const aboutLead = document.querySelector(".about__lead");
+  if (aboutLead && wc.about && wc.about.intro) {
+    aboutLead.textContent = wc.about.intro;
+  }
+
+  const aboutBody = document.querySelector(".about__body");
+  if (aboutBody && wc.about && wc.about.description) {
+    aboutBody.textContent = wc.about.description;
+  }
+
+  // About Statistics
+  const aboutStatsEl = document.querySelector(".about__stats");
+  if (aboutStatsEl && wc.aboutStats) {
+    if (Array.isArray(wc.aboutStats) && wc.aboutStats.length === 0) {
+      aboutStatsEl.style.display = "none";
+    } else if (Array.isArray(wc.aboutStats)) {
+      aboutStatsEl.style.display = "";
+      aboutStatsEl.innerHTML = wc.aboutStats.map(st => `
+        <div class="stat">
+          <span class="stat__num">${escapeHtml(st.value || "")}</span>
+          <span class="stat__label">${escapeHtml(st.label || "")}</span>
+        </div>
+      `).join("");
+    }
+  }
+
+  // 6. Location Section
+  const locationCity = document.getElementById("locationCity");
+  if (locationCity && restaurant.eyebrow) locationCity.textContent = restaurant.eyebrow;
+
+  const contact = restaurant.contact || {};
+
+  const locationAddress = document.getElementById("locationAddress");
+  if (locationAddress && contact.address) locationAddress.textContent = contact.address;
+
+  const locationPhoneLink = document.getElementById("locationPhoneLink");
+  if (locationPhoneLink && contact.phone) {
+    locationPhoneLink.textContent = contact.phone;
+    locationPhoneLink.setAttribute("href", `tel:${contact.phoneRaw || contact.phone.replace(/\D/g, "")}`);
+  }
+
+  const directionsLink = document.getElementById("directionsLink");
+  if (directionsLink && contact.directionsUrl) {
+    directionsLink.setAttribute("href", contact.directionsUrl);
+  }
+
+  // 7. Contact / Reservation CTAs & Final CTA
+  const ctaTitle = document.querySelector(".cta__title");
+  if (ctaTitle && wc.finalCta && wc.finalCta.heading) {
+    ctaTitle.textContent = wc.finalCta.heading;
+  }
+
+  const ctaSub = document.querySelector(".cta__sub");
+  if (ctaSub && wc.finalCta && wc.finalCta.description) {
+    ctaSub.textContent = wc.finalCta.description;
+  }
+
+  const reserveBtn = document.getElementById("reserveBtn");
+  if (reserveBtn) {
+    if (contact.phone) {
+      reserveBtn.setAttribute("href", `tel:${contact.phoneRaw || contact.phone.replace(/\D/g, "")}`);
+    }
+    if (wc.finalCta && wc.finalCta.buttonText) {
+      reserveBtn.textContent = wc.finalCta.buttonText;
+    }
+    if (wc.finalCta && wc.finalCta.buttonLink) {
+      reserveBtn.setAttribute("href", wc.finalCta.buttonLink);
+    }
+  }
+
+  const whatsappBtn = document.getElementById("whatsappBtn");
+  if (whatsappBtn && contact.whatsappUrl) {
+    whatsappBtn.setAttribute("href", contact.whatsappUrl);
+  }
+
+  // 8. Footer Content
+  const footerBrandDesc = document.getElementById("footerBrandDesc");
+  if (footerBrandDesc && restaurant.tagline) {
+    footerBrandDesc.textContent = `${restaurant.tagline} in the heart of ${restaurant.eyebrow || "Beirut"}.`;
+  }
+
+  const footerAddress = document.getElementById("footerAddress");
+  if (footerAddress && contact.address) footerAddress.textContent = contact.address;
+
+  const footerPhoneLink = document.getElementById("footerPhoneLink");
+  if (footerPhoneLink && contact.phone) {
+    footerPhoneLink.textContent = contact.phone;
+    footerPhoneLink.setAttribute("href", `tel:${contact.phoneRaw || contact.phone.replace(/\D/g, "")}`);
+  }
+
+  const footerCopy = document.getElementById("footerCopy");
+  if (footerCopy && restaurant.name) {
+    footerCopy.textContent = `© 2026 ${restaurant.name}. All rights reserved.`;
+  }
+}
+
+/* ===========================================================
+   14. Application Initialization & Reactive Synchronization
+   =========================================================== */
+let _appInitialized = false;
+
 async function initApp() {
   try {
     const data = await loadRestaurantData();
     AppState.data = data;
-    AppState.activeCategory = data.categories[0]?.id || "";
+    AppState.activeCategory = AppState.activeCategory || (data.categories[0]?.id || "");
     AppState.cart = loadCartFromStorage();
 
+    // Dynamically bind restaurant identity & featured dish & website content
+    const featuredId = (data.websiteContent && data.websiteContent.featured && data.websiteContent.featured.menuItemId) || data.featuredDishId || 2;
+    const featuredDish = (data.menu || []).find(m => m.id === featuredId) || (data.menu || [])[0];
+    renderRestaurantInfo(data.restaurant, featuredDish, data.websiteContent);
+
+    // Render menu tabs and grid
     renderTabs(data.categories, AppState.activeCategory);
     renderGrid(data.menu, AppState.activeCategory, data.restaurant.currency);
     renderCartBadge();
     renderCart();
 
-    attachEventDelegation();
-    setupScrollReveals();
+    // If modal is open, refresh current modal with fresh data
+    if (AppState.currentModalItem && DOM.modal && DOM.modal.classList.contains("is-open")) {
+      const freshItem = (data.menu || []).find(m => m.id === AppState.currentModalItem.id);
+      if (freshItem) {
+        openModal(freshItem);
+      }
+    }
+
+    // Attach listeners once
+    if (!_appInitialized) {
+      attachEventDelegation();
+      setupScrollReveals();
+      _appInitialized = true;
+    }
   } catch (error) {
     console.error("Failed to initialize LUMÉ restaurant application:", error);
   }
+}
+
+// Cross-tab and live storage listener
+if (typeof window !== "undefined") {
+  window.addEventListener("storage", (e) => {
+    if (e.key === "restoos.restaurant.lume") {
+      initApp();
+    }
+  });
+
+  window.addEventListener("restoos:data-updated", () => {
+    initApp();
+  });
 }
 
 // Start application when DOM is ready

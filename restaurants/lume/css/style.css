@@ -462,6 +462,16 @@ ul{ list-style:none; margin:0; padding:0; }
   transition: transform 0.7s var(--ease);
 }
 .dish-card:hover .dish-card__frame img{ transform: scale(1.08); }
+.dish-card__badges{
+  position:absolute;
+  top: 12px; left: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: calc(100% - 24px);
+  z-index: 2;
+  pointer-events: none;
+}
 .dish-card__badge{
   position:absolute;
   top: 12px; left: 12px;
@@ -473,6 +483,15 @@ ul{ list-style:none; margin:0; padding:0; }
   font-weight: 700;
   padding: 0.3rem 0.6rem;
   border-radius: 999px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+}
+.dish-card__badges .dish-card__badge{
+  position: static;
 }
 .dish-card__row{
   display:flex;
@@ -1103,6 +1122,11 @@ ul{ list-style:none; margin:0; padding:0; }
     font-size: 0.82rem;
     line-height: 1.35;
   }
+  .dish-card__badges{
+    top: 8px;
+    left: 8px;
+    max-width: calc(100% - 16px);
+  }
   .dish-card__badge{
     top: 8px;
     left: 8px;
@@ -1140,11 +1164,18 @@ ul{ list-style:none; margin:0; padding:0; }
     font-size: 0.76rem;
     line-height: 1.32;
   }
+  .dish-card__badges{
+    top: 6px;
+    left: 6px;
+    max-width: calc(100% - 12px);
+    gap: 3px;
+  }
   .dish-card__badge{
     top: 6px;
     left: 6px;
     font-size: 0.56rem;
     padding: 0.18rem 0.42rem;
+    max-width: 95px;
   }
   .featured__content{ padding: var(--sp-4) var(--sp-3); }
   .modal__body{ padding: var(--sp-3) var(--sp-2); }
