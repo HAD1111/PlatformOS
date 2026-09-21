@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schedule a Meeting — RestoOS Platform</title>
-  <meta name="description" content="Schedule a personalized 20-minute digital restaurant consultation and platform walkthrough.">
+  <title>Schedule Consultation — Coming Soon | BeKnown Platform</title>
+  <meta name="description" content="Direct consultation booking is coming soon to BeKnown Platform.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,11 +19,11 @@
   <!-- Minimal Header -->
   <header class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="nav-brand" aria-label="RestoOS Home">
+      <a href="index.html" class="nav-brand" aria-label="BeKnown Home">
         <div class="brand-mark">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
         </div>
-        <span class="brand-name">RestoOS</span>
+        <span class="brand-name">BeKnown</span>
       </a>
 
       <div class="nav-actions">
@@ -31,145 +31,42 @@
           <span class="nav-back-full">← Back to Overview</span>
           <span class="nav-back-short">← Back</span>
         </a>
-        <a href="request-demo.html" class="btn btn-line">
-          <span class="nav-back-full">Request Demo Form</span>
-          <span class="nav-back-short">Demo Form</span>
-        </a>
+        <a href="dashboard.html" class="btn btn-primary">Explore Platform</a>
       </div>
     </div>
   </header>
 
-  <main style="padding-top: calc(var(--nav-height) + var(--space-8)); padding-bottom: var(--space-20);">
-    <div class="container" style="max-width: 980px;">
+  <main style="padding-top: calc(var(--nav-height) + var(--space-12)); padding-bottom: var(--space-20);">
+    <div class="container" style="max-width: 720px;">
       
-      <!-- Simulation Disclaimer Notice -->
-      <div class="demo-disclaimer-box" style="margin-bottom: var(--space-8);">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <span>
-          <strong>Frontend Scheduling Simulation:</strong> This interface demonstrates the booking UX flow. Submitting a time slot records a mock booking into session storage. No external calendar invites (Google Calendar/Outlook) are created.
-        </span>
-      </div>
-
-      <div class="form-card">
-        <div style="margin-bottom: var(--space-8);">
-          <span class="badge badge-brass" style="margin-bottom: var(--space-2);">1-on-1 Consultation</span>
-          <h1 style="font-family: var(--font-heading); font-size: var(--fs-2xl); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">
-            Schedule a 20-Minute Video Consultation
+      <div class="form-card" style="text-align: center; padding: var(--space-10) var(--space-8);">
+        <div style="margin-bottom: var(--space-6);">
+          <span class="badge badge-brass" style="margin-bottom: var(--space-4); font-size: var(--fs-xs); padding: 6px 16px;">Coming Soon</span>
+          <h1 style="font-family: var(--font-heading); font-size: var(--fs-2xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">
+            Consultation Scheduling Coming Soon
           </h1>
-          <p style="font-size: var(--fs-sm); color: var(--text-secondary); line-height: 1.6;">
-            Select a date and convenient time slot to discuss your restaurant's digital setup, menu management needs, and custom branding options.
+          <p style="font-size: var(--fs-base); color: var(--text-secondary); line-height: 1.6; max-width: 560px; margin: 0 auto;">
+            Direct 1-on-1 consultations and live calendar booking are currently under development. They will become available once platform onboarding opens.
           </p>
         </div>
 
-        <form id="scheduleForm" novalidate>
-          <div class="schedule-container">
-            
-            <!-- Left: Date & Time Picker -->
-            <div class="schedule-calendar-card">
-              <div class="calendar-header">
-                <span class="calendar-month-title">Select Date</span>
-                <span class="badge badge-subtle" id="selectedDateLabel">Choose day</span>
-              </div>
+        <div class="demo-disclaimer-box" style="margin: var(--space-6) 0 var(--space-8) 0; text-align: left;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0; color: var(--accent-brass);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span style="font-size: var(--fs-sm); line-height: 1.6;">
+            <strong>Interactive Preview Available:</strong> You can explore our functional prototype right now. Test self-serve menu editing, website content controls, and real-time synchronization with the live LUMÉ digital restaurant experience.
+          </span>
+        </div>
 
-              <!-- 14-day interactive picker -->
-              <div class="calendar-days-grid" id="calendarDaysGrid">
-                <!-- Injected via schedule.js -->
-              </div>
-
-              <!-- Time Slot selector -->
-              <div style="margin-top: var(--space-6); border-top: 1px solid var(--border-subtle); padding-top: var(--space-4);">
-                <div class="slots-title">
-                  <span>Available Time Slots</span>
-                  <span style="font-size:0.75rem; color: var(--text-muted);">20 min meeting</span>
-                </div>
-                <div class="time-slots-grid" id="timeSlotsGrid">
-                  <!-- Injected via schedule.js -->
-                </div>
-              </div>
-
-              <!-- Timezone indicator -->
-              <div style="margin-top: var(--space-4);">
-                <label class="form-label" for="bookingTimezone" style="font-size: 0.72rem; color: var(--text-muted);">Timezone</label>
-                <select id="bookingTimezone" class="form-control" style="font-size: 0.8rem; padding: 0.45rem 0.75rem;">
-                  <option value="GMT+03:00 Beirut / Eastern Europe">GMT+03:00 Beirut / Eastern Europe</option>
-                  <option value="GMT+00:00 London / UTC">GMT+00:00 London / UTC</option>
-                  <option value="GMT-04:00 New York / Eastern Time">GMT-04:00 New York / Eastern Time</option>
-                  <option value="GMT+04:00 Dubai / Gulf Standard">GMT+04:00 Dubai / Gulf Standard</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Right: Contact Information -->
-            <div style="display:flex; flex-direction:column; justify-content:space-between;">
-              <div>
-                <h3 style="font-family: var(--font-heading); font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-4);">
-                  Your Contact Information
-                </h3>
-
-                <div class="form-group">
-                  <label class="form-label" for="bookingName">Your Name *</label>
-                  <input type="text" id="bookingName" class="form-control" placeholder="e.g. Karim Mansour" required>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="bookingEmail">Work Email *</label>
-                  <input type="email" id="bookingEmail" class="form-control" placeholder="karim@restaurant.com" required>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="bookingRestaurant">Restaurant Name *</label>
-                  <input type="text" id="bookingRestaurant" class="form-control" placeholder="e.g. LUMÉ" required>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="bookingPhone">Phone / WhatsApp</label>
-                  <input type="tel" id="bookingPhone" class="form-control" placeholder="+1 (555) 234-5678">
-                </div>
-              </div>
-
-              <div style="padding-top: var(--space-4);">
-                <button type="submit" class="btn btn-primary btn-block btn-lg btn-wrap-mobile">
-                  <span>Confirm Demo Booking (Simulation)</span>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </form>
+        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+          <a href="dashboard.html" class="btn btn-primary btn-lg">Explore Platform Preview</a>
+          <a href="restaurants/lume/index.html" target="_blank" rel="noopener" class="btn btn-secondary btn-lg">View LUMÉ Demo ↗</a>
+          <a href="index.html" class="btn btn-ghost btn-lg">Back to Overview</a>
+        </div>
       </div>
 
     </div>
   </main>
 
-  <!-- Simulated Booking Confirmation Modal -->
-  <div class="modal-backdrop" id="bookingSuccessModal" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
-    <div class="modal-content-card">
-      <div class="modal-icon-wrap" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg>
-      </div>
-      <h3 class="modal-title" id="bookingModalTitle">Demo Meeting Slot Reserved</h3>
-      <p class="modal-desc">
-        Your selected demo meeting slot has been successfully recorded in the simulation environment.
-      </p>
-
-      <div class="modal-summary-box" id="bookingModalSummary">
-        <!-- Injected dynamically via schedule.js -->
-      </div>
-
-      <div class="badge badge-demo" style="margin-bottom: var(--space-6); display:inline-block;">
-        Simulation Notice: No Real Calendar Event Created
-      </div>
-
-      <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
-        <button type="button" class="btn btn-primary" id="bookingCloseBtn">Done</button>
-        <a href="index.html" class="btn btn-secondary">Return to Overview</a>
-      </div>
-    </div>
-  </div>
-
   <script src="js/data.js"></script>
-  <script src="js/api-client.js"></script>
-  <script src="js/schedule.js"></script>
 </body>
 </html>

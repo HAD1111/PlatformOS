@@ -157,7 +157,7 @@ class ScheduleBooking {
             <div class="summary-line"><span>Date:</span><strong>${res.booking.date}</strong></div>
             <div class="summary-line"><span>Time:</span><strong>${res.booking.timeSlot} (${res.booking.timezone})</strong></div>
             <div class="summary-line"><span>Restaurant:</span><strong>${res.booking.restaurant}</strong></div>
-            <div class="summary-line"><span>Host:</span><strong>RestoOS Hospitality Lead</strong></div>
+            <div class="summary-line"><span>Host:</span><strong>BeKnown Hospitality Lead</strong></div>
           `;
         }
 

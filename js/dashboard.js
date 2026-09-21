@@ -236,7 +236,7 @@
       // Preview tabs toast
       this.dom.previewNavItems.forEach(item => {
         item.addEventListener('click', () => {
-          const msg = item.getAttribute('data-preview-msg') || 'This section will be unlocked in an upcoming stage.';
+          const msg = item.getAttribute('data-preview-msg') || 'Coming Soon: This feature is currently under development and will be available in a future update.';
           this.showToast(msg, 'info');
           this.closeMobileSidebar();
         });
@@ -1311,10 +1311,10 @@
         });
       }
 
-      // Photo Manager Controls (Placeholder for PHP Backend Stage)
+      // Photo Manager Controls (Placeholder)
       if (this.dom.btnChangePhoto) {
         this.dom.btnChangePhoto.addEventListener('click', () => {
-          this.showToast('Photo upload and server storage will be unlocked with the PHP backend.', 'info');
+          this.showToast('Coming Soon: This feature is currently under development and will be available in a future update.', 'info');
         });
       }
 
@@ -1596,7 +1596,7 @@
       this.dom.editItemIngredients.value = item.ingredients || '';
       this.dom.editItemAvailable.checked = item.available !== false;
 
-      // Photo preview placeholder (Server storage unlocked in PHP backend stage)
+      // Photo preview placeholder
       if (this.dom.editItemPhotoPreview) {
         this.dom.editItemPhotoPreview.src = item.image || '';
         this.dom.editItemPhotoPreview.alt = item.name;

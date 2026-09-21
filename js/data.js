@@ -11,15 +11,15 @@
 const PLATFORM_DATA = {
   // Brand & Company Information
   company: {
-    name: "RestoOS",
-    shortName: "RestoOS",
-    tagline: "The Digital Experience Platform for Modern Restaurants",
+    name: "BeKnown Platform",
+    shortName: "BeKnown",
+    tagline: "The Restaurant Experience Platform by BeKnown",
     valueProposition: "We make your restaurant look better online and make managing it easier.",
     heroHeadline: "Your restaurant deserves a better digital experience.",
     heroSubhead: "Beautiful websites and digital menus designed for modern restaurants — managed entirely from one simple platform.",
-    contactEmail: "hello@restoos.demo",
+    contactEmail: "hello@beknown.com",
     contactPhone: "+1 (555) 234-5678",
-    statusBadge: "Platform Preview • Stage 1 Frontend"
+    statusBadge: "Interactive Platform Preview"
   },
 
   // Core Platform Features (Hospitality-focused, no ERP/POS bloating)
@@ -63,7 +63,7 @@ const PLATFORM_DATA = {
       id: "always-updated",
       icon: "refresh-cw",
       title: "Always Up to Date",
-      description: "Any change you make in your private partner dashboard synchronizes across your website instantly once live with central data.",
+      description: "Any change you make in your dashboard preview synchronizes across your digital menu instantly.",
       badge: "Live Sync"
     }
   ],
@@ -78,7 +78,7 @@ const PLATFORM_DATA = {
     {
       step: "02",
       title: "You manage your menu",
-      description: "Easily update seasonal dishes, mark sold-out items, change daily prices, and organize categories directly through your private partner portal."
+      description: "Easily update seasonal dishes, mark sold-out items, change daily prices, and organize categories directly through your management dashboard."
     },
     {
       step: "03",
@@ -133,7 +133,7 @@ const PLATFORM_DATA = {
   dashboardPreview: {
     isDemo: true,
     restaurantName: "LUMÉ — Beirut",
-    planLabel: "Professional Partner",
+    planLabel: "Interactive Preview",
     stats: [
       { label: "Menu Items", value: "42", note: "Active on digital menu" },
       { label: "Website Visits", value: "1,248", note: "Simulated monthly traffic" },
@@ -167,8 +167,8 @@ const PLATFORM_DATA = {
           "Cloud hosting included",
           "Standard email support"
         ],
-        ctaText: "Select Starter",
-        ctaAction: "request-demo.html?plan=starter"
+        ctaText: "Coming Soon",
+        ctaAction: "#pricing"
       },
       {
         id: "professional",
@@ -187,8 +187,8 @@ const PLATFORM_DATA = {
           "Illustrative visitor & QR scan analytics",
           "Priority hospitality support"
         ],
-        ctaText: "Request Demo with Pro",
-        ctaAction: "request-demo.html?plan=professional"
+        ctaText: "Coming Soon",
+        ctaAction: "#pricing"
       },
       {
         id: "custom",
@@ -206,8 +206,8 @@ const PLATFORM_DATA = {
           "Dedicated hospitality onboarding specialist",
           "Direct phone & WhatsApp emergency support"
         ],
-        ctaText: "Talk to Us",
-        ctaAction: "schedule.html?plan=custom"
+        ctaText: "Coming Soon",
+        ctaAction: "#pricing"
       }
     ]
   },
@@ -249,7 +249,7 @@ const PLATFORM_DATA = {
     },
     {
       q: "Can I update my menu myself?",
-      a: "Yes. You get access to a private Partner Portal where you can change prices, add seasonal dishes, update descriptions, and toggle items on or off in real time without writing any code or waiting for a web designer."
+      a: "Yes. You get access to an intuitive management dashboard where you can change prices, add seasonal dishes, update descriptions, and toggle items on or off in real time without writing any code or waiting for a web designer."
     },
     {
       q: "Do I need technical knowledge?",
